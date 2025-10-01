@@ -19,7 +19,7 @@ body {
   box-shadow: 0 0 25px rgba(144, 238, 144, 0.4);
   width: 100%;
   max-width: 600px;
-  height: 600px; /* 👈 Increased height */
+  height: 600px; 
   display: flex;
   flex-direction: column;
   justify-content: center;

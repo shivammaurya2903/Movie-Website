@@ -24,7 +24,7 @@ body {
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  gap: 30px; /* spacing between header, form, and footer */
+  gap: 30px; 
 }
 
 .signup-container h2 {
@@ -36,13 +36,13 @@ body {
 form {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* spacing between form groups */
+  gap: 20px; 
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* spacing between label and input */
+  gap: 8px; 
 }
 
 .form-group label {
@@ -75,7 +75,7 @@ form {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 10px; /* extra space above button */
+  margin-top: 10px;
 }
 
 .signup-btn:hover {
@@ -86,7 +86,7 @@ form {
   text-align: center;
   font-size: 1em;
   color: #ccc;
-  margin-top: 20px; /* space above footer */
+  margin-top: 20px; 
 }
 
 .footer-text a {

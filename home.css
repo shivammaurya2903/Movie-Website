@@ -1,4 +1,4 @@
-/* 🌐 Global Reset */
+
 * {
   margin: 0;
   padding: 0;
@@ -17,15 +17,31 @@
   scrollbar-color: #4dbf00 transparent;
 }
 
-html, body {
+html {
   width: 100%;
-  overflow-x: hidden;
-  font-family: "Roboto", sans-serif;
-  background-color: #121212;
-  color: white;
+  height: 100%;
 }
 
-/* 🔝 Navbar */
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  background-color: #000000;
+  color: var(--text-color);
+}
+
+
+:root {
+  --space-xs: 6px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --text-color: #ffffff; /* crystal white */
+}
+
 .navbar {
   width: 100%;
   height: 100px;
@@ -34,6 +50,10 @@ html, body {
   top: 0;
   z-index: 1000;
   text-decoration: none;
+}
+
+.navbar {
+  margin-bottom: var(--space-md);
 }
 
 .navbar-container {
@@ -45,7 +65,6 @@ html, body {
   font-family: "Sen", sans-serif;
 }
 
-/* 🎬 Logo */
 .logo-container {
   flex: 1;
 }
@@ -55,7 +74,6 @@ html, body {
   color: #4dbf00;
 }
 
-/* 🧭 Navigation Menu */
 .menu-container {
   display: flex;
   justify-content: center;
@@ -97,7 +115,6 @@ html, body {
   width: 100%;
 }
 
-/* 👤 User State */
 body.user-is-logged-in .profile-button {
   display: inline-block;
 }
@@ -106,19 +123,26 @@ body.user-is-logged-in .login-button {
   display: none;
 }
 
-/* 📦 Containers */
+
 .container {
-  background-color: #151515;
-  padding: 20px;
+  background-color: #000000;
+  padding: 24px;
+  margin: 0 auto;
   max-width: 100vw;
+  flex: 1 0 auto; 
 }
 
-/* 🖼️ Banner & Featured */
+
 .content-container {
   background-image: url('img/19.png');
   background-size: cover;
   background-position: center;
   height: 70vh;
+}
+
+.content-container {
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
 }
 
 #featured {
@@ -133,9 +157,12 @@ body.user-is-logged-in .login-button {
   width: 200px;
 }
 
+.featured-content {
+  margin: var(--space-sm) 0 var(--space-lg) 0;
+}
 .featured-desc {
   width: 500px;
-  color: lightgray;
+  color: var(--text-color);
   margin: 30px 0;
   padding-left: 40px;
 }
@@ -151,9 +178,9 @@ body.user-is-logged-in .login-button {
   cursor: pointer;
 }
 
-/* 🎞️ Movie List */
 .movie-list-container {
   padding: 30px 20px;
+  margin: var(--space-lg) 0;
 }
 
 .movie-list-wrapper {
@@ -163,28 +190,34 @@ body.user-is-logged-in .login-button {
 
 .movie-list {
   display: flex;
-  align-items: center;
-  height: 300px;
-  transition: all 1s ease-in-out;
+  align-items: flex-start;
+  height: auto;
+  transition: all 0.4s ease-in-out;
+  gap: var(--space-md);
 }
 
 .movie-list-item {
-  margin-right: 30px;
+  margin-right: 16px;
   position: relative;
+  width: 270px;
+  overflow: hidden;
+  padding: var(--space-sm);
 }
 
 .movie-list-item-img {
-  width: 270px;
+  width: 100%;
   height: 200px;
+  display: block;
   object-fit: cover;
-  border-radius: 20px;
-  transition: all 1s ease-in-out;
+  border-radius: 12px;
+  transition: transform 0.35s ease, opacity 0.35s ease;
   will-change: transform;
+  z-index: 1;
 }
 
 .movie-list-item:hover .movie-list-item-img {
-  transform: scale(1.2);
-  opacity: 0.5;
+  transform: scale(1.06);
+  opacity: 0.9;
 }
 
 .movie-list-item-title,
@@ -193,29 +226,44 @@ body.user-is-logged-in .login-button {
   opacity: 0;
   transition: 1s ease-in-out;
   position: absolute;
-  left: 50px;
+  left: 20px;
+  transform: translateX(-10px);
+  z-index: 2;
 }
 
 .movie-list-item-title {
-  top: 10%;
-  font-size: 32px;
+  top: 12px;
+  font-size: 18px;
   font-weight: bold;
-  background-color: #333;
-  padding: 0 10px;
-  white-space: nowrap;
+  background: transparent;
+  padding: 6px 10px;
+  color: var(--text-color);
+  max-width: 230px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
+  border-radius: 6px;
 }
 
 .movie-list-item-desc {
-  top: 30%;
+  bottom: 60px;
   width: 230px;
   font-size: 14px;
-  background-color: #333;
-  padding: 10px;
-  white-space: nowrap;
+  background: transparent;
+  padding: 8px;
+  color: var(--text-color);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
+  border-radius: 6px;
 }
 
 .movie-list-item-button {
@@ -228,12 +276,58 @@ body.user-is-logged-in .login-button {
   cursor: pointer;
 }
 
-/* 🧱 Movie Grid */
-.movie-grid {
+
+.movie-list-item:hover .movie-list-item-title,
+.movie-list-item:hover .movie-list-item-desc,
+.movie-list-item:hover .movie-list-item-button {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.35s ease-in-out;
+}
+
+.movie-list-item-img {
+  z-index: 1;
+}
+
+
+@media (hover: none), (max-width: 768px) {
+  .movie-list-item-title,
+  .movie-list-item-desc,
+  .movie-list-item-button {
+    opacity: 1;
+    transform: translateX(0);
+    position: static;
+    background: transparent;
+    padding: 6px 0 0 0;
+    max-width: 100%;
+    margin-top: 8px;
+    z-index: 2;
+  }
+
+  .movie-list-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .movie-list-item-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+}
+
+
+.movie-grid { 
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
+
+h1, h2, h3 { margin: 0 0 var(--space-sm) 0; }
+p { margin: 0 0 var(--space-sm) 0; }
 
 .movie-card {
   flex: 1 1 30%;
@@ -245,21 +339,35 @@ body.user-is-logged-in .login-button {
   transition: box-shadow 0.3s ease;
 }
 
-/* 🖱️ Button Hover */
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
 button:hover {
   background-color: #45a000;
   transition: background-color 0.3s ease;
 }
 
-/* 🦶 Footer */
-.footer-links a:hover {
-  color: #4dbf00;
-  text-decoration: underline;
+
+
+.site-footer {
+  color: var(--text-color);
+  padding: 20px 0;
+  text-align: center;
+  font-size: 14px;
+  margin-top: auto; 
+  flex-shrink: 0; 
 }
-/* 📱 Responsive Design */
+@media (max-width: 600px) {
+  .footer-container { flex-direction: column; text-align: center; }
+  .footer-right { margin-top: var(--space-sm); }
+  .footer-right a { margin-left: 0.5rem; margin-right: 0.5rem; }
+}
 
 @media (max-width: 480px) {
-  /* Navbar adjustments */
+
   .navbar-container {
     flex-direction: column;
     align-items: flex-start;
@@ -270,12 +378,15 @@ button:hover {
     font-size: 24px;
   }
 
-  /* Hide menu and prepare for hamburger toggle */
+
   .menu-container {
     display: none;
   }
 
-  /* Featured section */
+  .content-container {
+    height: 50vh;
+    padding: 10px;
+  }
   .featured-title {
     font-size: 1.2rem;
     padding-left: 20px;
@@ -294,7 +405,6 @@ button:hover {
     font-size: 0.9rem;
   }
 
-  /* Movie list adjustments */
   .movie-list {
     flex-direction: column;
     height: auto;
@@ -330,7 +440,7 @@ button:hover {
     font-size: 0.85rem;
   }
 
-  /* Movie grid becomes single column */
+
   .movie-grid {
     flex-direction: column;
     gap: 15px;
@@ -341,7 +451,6 @@ button:hover {
     min-width: auto;
   }
 
-  /* Text scaling */
   h1, h2, h3 {
     font-size: 1.2rem;
   }

@@ -11,17 +11,16 @@ body {
   color: #fff;
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.8;
-  font-size: 1.2rem; /* Base font size increased */
+  font-size: 1.2rem; 
 }
 
-/* General spacing between sections */
 section {
   padding: 3rem 1.5rem;
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* Main title */
+
 .about-section h1 {
   font-size: 3.5rem;
   color: #4db800;
@@ -29,7 +28,6 @@ section {
   margin-bottom: 1.5rem;
 }
 
-/* Intro paragraph */
 .intro {
   font-size: 1.3rem;
   color: #ccc;
@@ -37,7 +35,6 @@ section {
   margin-bottom: 3rem;
 }
 
-/* Section headings */
 .developer-info h2,
 .contact-form-section h2 {
   font-size: 2.2rem;
@@ -47,7 +44,6 @@ section {
   display: inline-block;
 }
 
-/* Developer info text */
 .developer-info p {
   font-size: 1.2rem;
   color: #f2ecec;
@@ -58,7 +54,9 @@ section {
   text-decoration: none;
 }
 
-/* Contact form styling */
+.developer-info a:hover {
+  text-decoration: underline;
+}
 .contact-form {
   display: flex;
   flex-direction: column;

@@ -29,7 +29,7 @@
   document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault();
     const username = document.getElementById("username").value;
-    // In a real application, you would validate credentials here
+  
     if (username) {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("username", username);
@@ -44,4 +44,3 @@
 </html>
 
 
-<!-- End of file: login.html -->
