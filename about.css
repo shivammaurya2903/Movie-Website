@@ -58,6 +58,27 @@ section {
 .developer-info a:hover {
   text-decoration: underline;
 }
+.thanks-section {
+  background: rgba(77, 191, 0, 0.06); /* subtle green tint */
+  border-left: 4px solid #4db800;
+  padding: 1rem 1.2rem;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  color: #e6ffe6;
+}
+
+.thanks-section h2 {
+  font-size: 1.8rem;
+  color: #4db800;
+  margin: 0 0 0.5rem 0;
+}
+
+.thanks-section p {
+  margin: 0;
+  color: #dfefe0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -94,4 +115,10 @@ section {
 
 .contact-form button:hover {
   background-color: #0e7706;
+}
+
+@media (max-width: 600px) {
+  .thanks-section { padding: 0.9rem 1rem; }
+  .thanks-section h2 { font-size: 1.5rem; }
+  .thanks-section p { font-size: 0.98rem; }
 }

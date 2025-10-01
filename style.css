@@ -1,10 +1,11 @@
+:root { --navbar-height: 100px; }
+
 *{
-    box-sizing: border-box;
-    padding: 0;
-    text-decoration: none;  
-    margin: 0;
-    scrollbar-color: #4db800 transparent;
-    
+  box-sizing: border-box;
+  padding: 0;
+  text-decoration: none;  
+  margin: 0;
+  scrollbar-color: #4db800 transparent;
 }
 body {
   margin: 0;
@@ -39,18 +40,19 @@ body {
 .logo {
   font-size: 30px;
   color: #4dbf00;
-  margin-left: 50px;
+  margin-left: 30px;
 }
 
 .menu-container {
-  margin-right: 350px;
+  margin-right: 40px;
   background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60px;
-  gap: 40px;
+  gap: 24px;
   font-family: 'Sen', sans-serif;
+  flex-wrap: wrap; /* wrap on smaller widths */
 }
 
 .menu-container a {
@@ -93,7 +95,9 @@ body {
   background: url('img/hero-bg.jpg') center/cover no-repeat;
   background-size: cover;
   object-fit: cover;
-  height: 70vh;
+  min-height: 60vh;
+  padding: 28px 20px;
+  padding-top: calc(28px + 0.35 * var(--navbar-height)); /* prevent navbar overlap */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,6 +122,17 @@ body {
   z-index: 2;
 }
 
+.hero-content h1 {
+  margin: 0 0 12px 0;
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
+}
+
+.hero-content p {
+  margin: 0 0 12px 0;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  color: #f5f5f5;
+}
+
 .btn {
   background-color: #4db800;
   padding: 0.8rem 1.5rem;
@@ -126,6 +141,8 @@ body {
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
+  display: inline-block;
+  margin-top: 12px;
 }
 
 .highlight-banner {
@@ -142,7 +159,29 @@ body {
   margin-left: 1rem;
   text-decoration: none;
   border-radius: 4px;
+  display: inline-block;
+  margin-top: 12px;
 }
+
+@media (max-width: 600px) {
+  .btn, .btn-dark { display: block; width: calc(100% - 40px); margin: 12px auto 0; }
+  .menu-container { display: none; }
+  .navbar-container { padding: 0 12px; }
+  .hero { min-height: 40vh; padding: 16px; }
+}
+
+@media (max-width: 992px) {
+  .navbar-container { padding: 0 24px; }
+  .menu-container { gap: 14px; margin-right: 20px; }
+  .hero { min-height: 50vh; padding: 20px; }
+}
+
+@media (max-width: 1200px) {
+  .menu-container { margin-right: 20px; }
+}
+
+/* Offset main content instead of changing navbar height */
+.container { margin-top: var(--navbar-height); }
 
 .footer {
   align-content: bottom;
