@@ -2,6 +2,8 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     text-decoration: none;
+    scrollbar-color: #4db800 transparent;
+    
 }
 :root {
   --bg-color: #000;
