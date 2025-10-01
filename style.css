@@ -88,32 +88,6 @@ body {
 .menu-container a:focus::after {
   width: 100%;
 }
-/* 🔍 Search Container Styling */
-.search-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: black;
-}
-
-/* 🧠 Search Input Styling */
-.search-container input[type="text"] {
-  width: 300px;
-  padding: 10px 15px;
-  border-radius: 25px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  background-color: #222;
-  color: #fff;
-  transition: box-shadow 0.3s ease;
-}
-
-/* ✨ Focus Effect */
-.search-container input[type="text"]:focus {
-  box-shadow: 0 0 5px 2px #4dbf00;
-}
 
 
 
