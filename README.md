@@ -48,8 +48,8 @@ Think of it as a **starter kit for movie websites** – perfect for practice, po
 ## 🚀 Setup Instructions  
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/your-username/Zinemae.git
-   cd Zinemae
+   git clone https://github.com/shivammaurya2903/Movie-Website.git
+   cd Zinema
 
 git clone https://github.com/your-username/Movie_Website/
 cd Movie-Website
