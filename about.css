@@ -1,0 +1,98 @@
+*{
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  text-decoration: none;
+  
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0d0d0d;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.8;
+  font-size: 1.2rem; /* Base font size increased */
+}
+
+/* General spacing between sections */
+section {
+  padding: 3rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Main title */
+.about-section h1 {
+  font-size: 3.5rem;
+  color: #4db800;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Intro paragraph */
+.intro {
+  font-size: 1.3rem;
+  color: #ccc;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Section headings */
+.developer-info h2,
+.contact-form-section h2 {
+  font-size: 2.2rem;
+  color: #4db800;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #4db800;
+  display: inline-block;
+}
+
+/* Developer info text */
+.developer-info p {
+  font-size: 1.2rem;
+  color: #f2ecec;
+  margin-bottom: 3rem;
+}
+.developer-info a {
+  color: #4db800;
+  text-decoration: none;
+}
+
+/* Contact form styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #888;
+}
+
+.contact-form button {
+  background-color: #4db800;
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #0e7706;
+}

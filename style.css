@@ -1,0 +1,378 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  list-style: none;
+  text-decoration: none;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #121212;
+  color: white; 
+  overflow-x: hidden;
+}
+
+.navbar {
+  width: 100%;
+  height: 100px;
+  background-color: black;
+  position: sticky;
+  top: 0;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  height: 100%;
+  color: white;
+  font-family: "Sen", sans-serif;
+}
+
+.logo-container {
+  flex: 1;
+}
+
+.logo {
+  font-size: 30px;
+  color: #4dbf00;
+}
+/* 🎬 Movie Website Navbar Styling */
+.menu-container {
+  margin-right: 350px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  gap: 40px;
+  font-family: 'Sen', sans-serif;
+}
+
+/* 🧭 Navigation Links */
+.menu-container a {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* ✨ Hover & Focus Effects */
+.menu-container a:hover,
+.menu-container a:focus {
+  color: #4dbf00;
+  outline: none;
+}
+
+/* 🔽 Optional underline animation */
+.menu-container a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: #4dbf00;
+  transition: width 0.3s ease;
+}
+
+.menu-container a:hover::after,
+.menu-container a:focus::after {
+  width: 100%;
+}
+/* 🔍 Search Container Styling */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: black;
+}
+
+/* 🧠 Search Input Styling */
+.search-container input[type="text"] {
+  width: 300px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background-color: #222;
+  color: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+/* ✨ Focus Effect */
+.search-container input[type="text"]:focus {
+  box-shadow: 0 0 5px 2px #4dbf00;
+}
+
+
+
+.container {
+  background-color: #151515;
+  color: white;
+  padding: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content-container  {
+
+  background-image: url('img/19.png');
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+}
+
+#featured {
+  padding: 20px;
+  background-image: url('img/20.png');
+  background-size: cover;
+  background-position: center;
+  
+}
+
+
+.featured-title {
+  padding: 50px 0 10px 40px;
+  width: 200px;
+  padding-left: 40px;
+ 
+}
+
+.featured-desc {
+  width: 500px;
+  color: lightgray;
+  margin: 30px 0;
+  padding-left: 40px;
+}
+
+.featured-button {
+  background-color: #4dbf00;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.movie-list-container {
+  padding: 30px 20px;
+}
+
+.movie-list-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-list {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
+}
+
+.movie-list-item {
+  margin-right: 30px;
+  position: relative;
+}
+
+.movie-list-item:hover .movie-list-item-img {
+  transform: scale(1.2);
+  margin: 0 30px;
+  opacity: 0.5;
+}
+
+.movie-list-item:hover .movie-list-item-title,
+.movie-list-item:hover .movie-list-item-desc,
+.movie-list-item:hover .movie-list-item-button {
+  opacity: 1;
+}
+
+.movie-list-item-img {
+  transition: all 1s ease-in-out;
+  width: 270px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.movie-list-item-title {
+  background-color: #333;
+  padding: 0 10px;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.movie-list-item-desc {
+  background-color: #333;
+  padding: 10px;
+  font-size: 14px;
+  position: absolute;
+  top: 30%;
+  left: 50px;
+  width: 230px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.movie-list-item-button {
+  padding: 10px;
+  background-color: #4dbf00;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.movie-card {
+  flex: 1 1 30%;
+  min-width: 200px;
+}
+
+.container.active {
+  background-color: white;
+}
+
+.movie-list-title.active {
+  color: black;
+}
+
+.navbar-container.active {
+  background-color: white;
+
+  color: black;
+}
+
+
+
+
+
+@media only screen and (max-width: 940px){
+    .menu-container{
+        display: none;
+    }
+}
+
+/* 📱 Responsive Adjustment */
+@media only screen and (max-width: 768px) {
+  .search-container input[type="text"] {
+    width: 80%;
+  }
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .banner {
+    padding: 30px 15px;
+  }
+
+  .watch-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .movie-card h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner h1 {
+    font-size: 1.5rem;
+  }
+
+  .banner p {
+    font-size: 0.95rem;
+  }
+
+  .movie-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Additional Styles for Enhancements */
+/* Add any additional styles here for further enhancements */   
+/* Example: Button Hover Effects */
+button:hover {
+  background-color: #45a000;
+  transition: background-color 0.3s ease;
+}
+
+
+/* Example: Card Shadow Effects */
+.movie-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+/* Example: Smooth Scroll for Anchor Links */
+a {
+  scroll-behavior: smooth;
+}
+/* Example: Text Overflow Handling */
+.movie-list-item-title,
+.movie-list-item-desc {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} 
+/* Example: Footer Link Hover Effects */
+.footer-links a:hover {
+  color: #4dbf00;
+  text-decoration: underline;
+}
+/* Example: Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .menu-container {
+    margin: 10px 0;
+    gap: 20px;
+  }
+
+  .search-container {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .search-container input[type="text"] {
+    width: 100%;
+  }
+}

@@ -1,0 +1,71 @@
+/* Reset and base styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0d0d0d;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container for error content */
+.error-container {
+  text-align: center;
+  max-width: 600px;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #4db800;
+}
+
+/* Error headline */
+.error-container h1 {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+  color: #4db800;
+  letter-spacing: 2px;
+}
+
+/* Subtext */
+.error-container p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #ccc;
+}
+
+/* Maintenance message */
+.maintenance-msg {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #aaa;
+}
+
+/* GIF styling */
+.error-gif {
+  display: block;
+  margin: 0 auto 2rem auto;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  object-fit: cover;
+}
+
+/* Button styling */
+.btn {
+  background-color: #4db800;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #1d4202;
+}
