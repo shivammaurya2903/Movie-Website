@@ -2,12 +2,13 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   text-decoration: none;
+  scrollbar-color: #4db800 transparent;
   
 }
 body {
   margin: 0;
   padding: 0;
-  background-color: #0d0d0d;
+  background-color: #000000;
   color: #fff;
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.8;
