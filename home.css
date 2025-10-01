@@ -349,15 +349,8 @@ button:hover {
   p {
     font-size: 0.95rem;
   }
-
-  /* Footer links */
-  .footer-links {
-    text-align: center;
-    padding: 10px;
-  }
-
-  .footer-links a {
-    display: block;
-    margin: 5px 0;
+  button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
   }
 }
