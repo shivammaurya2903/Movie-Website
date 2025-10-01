@@ -1,73 +1,86 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    text-decoration: none;  
-}
-body {
+/* 🌐 Global Reset */
+* {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #0d0d0d;
-  color: #fff;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  scroll-behavior: smooth;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #4dbf00 transparent;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+  background-color: #121212;
+  color: white;
+}
+
+/* 🔝 Navbar */
 .navbar {
   width: 100%;
   height: 100px;
   background-color: black;
   position: sticky;
   top: 0;
-  display: flex;
-  align-items: center;
-  z-index: 100;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  justify-content: space-between
+  z-index: 1000;
+  text-decoration: none;
 }
 
 .navbar-container {
   display: flex;
   align-items: center;
-  padding: 0 50px;
+  justify-content: space-between;
+  padding: 0 30px;
   height: 100%;
-  color: white;
   font-family: "Sen", sans-serif;
 }
 
+/* 🎬 Logo */
+.logo-container {
+  flex: 1;
+}
 
 .logo {
   font-size: 30px;
   color: #4dbf00;
-  margin-left: 50px;
 }
-/* 🎬 Movie Website Navbar Styling */
+
+/* 🧭 Navigation Menu */
 .menu-container {
-  margin-right: 350px;
-  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 30px;
   height: 60px;
-  gap: 40px;
   font-family: 'Sen', sans-serif;
 }
 
-/* 🧭 Navigation Links */
 .menu-container a {
   color: #ffffff;
   font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
-  transition: color 0.3s ease;
   position: relative;
+  transition: color 0.3s ease;
+  scroll-behavior: smooth;
 }
 
-/* ✨ Hover & Focus Effects */
 .menu-container a:hover,
 .menu-container a:focus {
   color: #4dbf00;
   outline: none;
 }
 
-/* 🔽 Optional underline animation */
 .menu-container a::after {
   content: '';
   position: absolute;
@@ -84,107 +97,267 @@ body {
   width: 100%;
 }
 
-.hero {
-  margin: 10px 30px;
-  margin-bottom: 40px;
-  position: relative;
-  background: url('img/hero-bg.jpg') center/cover no-repeat;
+/* 👤 User State */
+body.user-is-logged-in .profile-button {
+  display: inline-block;
+}
+
+body.user-is-logged-in .login-button {
+  display: none;
+}
+
+/* 📦 Containers */
+.container {
+  background-color: #151515;
+  padding: 20px;
+  max-width: 100vw;
+}
+
+/* 🖼️ Banner & Featured */
+.content-container {
+  background-image: url('img/19.png');
   background-size: cover;
-  object-fit: cover;
+  background-position: center;
   height: 70vh;
+}
+
+#featured {
+  padding: 20px;
+  background-image: url('img/20.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.featured-title {
+  padding: 50px 0 10px 40px;
+  width: 200px;
+}
+
+.featured-desc {
+  width: 500px;
+  color: lightgray;
+  margin: 30px 0;
+  padding-left: 40px;
+}
+
+.featured-button {
+  background-color: #4dbf00;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+/* 🎞️ Movie List */
+.movie-list-container {
+  padding: 30px 20px;
+}
+
+.movie-list-wrapper {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.movie-list {
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
+  height: 300px;
+  transition: all 1s ease-in-out;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Adjust opacity here */
-  z-index: 1;
-}
-
-.hero-content {
+.movie-list-item {
+  margin-right: 30px;
   position: relative;
-  z-index: 2;
 }
 
-.btn {
-  background-color: #4db800;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  color: #fff;
-  text-decoration: none;
+.movie-list-item-img {
+  width: 270px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: all 1s ease-in-out;
+  will-change: transform;
+}
+
+.movie-list-item:hover .movie-list-item-img {
+  transform: scale(1.2);
+  opacity: 0.5;
+}
+
+.movie-list-item-title,
+.movie-list-item-desc,
+.movie-list-item-button {
+  opacity: 0;
+  transition: 1s ease-in-out;
+  position: absolute;
+  left: 50px;
+}
+
+.movie-list-item-title {
+  top: 10%;
+  font-size: 32px;
   font-weight: bold;
-  border-radius: 5px;
+  background-color: #333;
+  padding: 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.highlight-banner {
-  background-color: #4db800;
-  text-align: center;
-  padding: 1rem;
-  font-weight: bold;
-}
-
-.btn-dark {
-  background-color: #000;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  margin-left: 1rem;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-.footer {
-  align-content: bottom;
-  color: white;
-  padding: 40px 20px;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #4dbf00;
-  margin-bottom: 20px;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: white;
-  text-decoration: none;
+.movie-list-item-desc {
+  top: 30%;
+  width: 230px;
   font-size: 14px;
-  transition: color 0.3s ease;
+  background-color: #333;
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.footer-links a:hover,
-.footer-links a:focus {
+.movie-list-item-button {
+  bottom: 20px;
+  padding: 10px;
+  background-color: #4dbf00;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* 🧱 Movie Grid */
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.movie-card {
+  flex: 1 1 30%;
+  min-width: 200px;
+}
+
+.movie-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+/* 🖱️ Button Hover */
+button:hover {
+  background-color: #45a000;
+  transition: background-color 0.3s ease;
+}
+
+/* 🦶 Footer */
+.footer-links a:hover {
   color: #4dbf00;
-  outline: none;
+  text-decoration: underline;
 }
+/* 📱 Responsive Design */
 
+@media (max-width: 480px) {
+  /* Navbar adjustments */
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
 
-.footer-copy {
-  font-size: 12px;
-  color: #aaa;
+  .logo {
+    font-size: 24px;
+  }
+
+  /* Hide menu and prepare for hamburger toggle */
+  .menu-container {
+    display: none;
+  }
+
+  /* Featured section */
+  .featured-title {
+    font-size: 1.2rem;
+    padding-left: 20px;
+    width: auto;
+  }
+
+  .featured-desc {
+    font-size: 0.9rem;
+    width: auto;
+    padding-left: 20px;
+  }
+
+  .featured-button {
+    margin-left: 20px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  /* Movie list adjustments */
+  .movie-list {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .movie-list-item {
+    margin-bottom: 20px;
+  }
+
+  .movie-list-item-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .movie-list-item-title {
+    font-size: 1rem;
+    left: 20px;
+    top: 10px;
+  }
+
+  .movie-list-item-desc {
+    font-size: 0.85rem;
+    left: 20px;
+    top: 60px;
+    width: 80%;
+  }
+
+  .movie-list-item-button {
+    left: 20px;
+    bottom: 10px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  /* Movie grid becomes single column */
+  .movie-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .movie-card {
+    flex: 1 1 100%;
+    min-width: auto;
+  }
+
+  /* Text scaling */
+  h1, h2, h3 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  /* Footer links */
+  .footer-links {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .footer-links a {
+    display: block;
+    margin: 5px 0;
+  }
 }
