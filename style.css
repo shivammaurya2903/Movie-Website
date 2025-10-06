@@ -89,32 +89,6 @@ body {
   width: 100%;
 }
 
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 4px;
-  margin-right: 20px;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background-color: #fff;
-  transition: 0.3s;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
 
 .hero {
   margin: 10px 30px;
@@ -192,9 +166,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
   .menu-container {
     position: absolute;
     top: 100%;
