@@ -388,6 +388,26 @@ body.user-is-logged-in .login-button {
   width: 100%;
 }
 
+.site-footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid #4dbf00;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-container p {
+  font-size: 14px;
+  margin: 0;
+}
+
 @media (max-width: 480px) {
   .watch-main { padding: 6px 8px; font-size: 0.9rem; }
   .watch-toggle { width: 36px; min-width: 36px; }

@@ -117,8 +117,48 @@ section {
   background-color: #0e7706;
 }
 
+.site-footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid #4dbf00;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-container p {
+  font-size: 14px;
+  margin: 0;
+}
+
 @media (max-width: 600px) {
   .thanks-section { padding: 0.9rem 1rem; }
   .thanks-section h2 { font-size: 1.5rem; }
   .thanks-section p { font-size: 0.98rem; }
+}
+
+.site-footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid #4db800;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-container p {
+  font-size: 14px;
+  margin: 0;
 }
