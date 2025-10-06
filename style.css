@@ -24,7 +24,8 @@ body {
   align-items: center;
   z-index: 100;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  justify-content: space-between
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .navbar-container {
@@ -86,6 +87,33 @@ body {
 .menu-container a:hover::after,
 .menu-container a:focus::after {
   width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+  margin-right: 20px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
 }
 
 .hero {
@@ -163,9 +191,35 @@ body {
   margin-top: 12px;
 }
 
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  .menu-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  .menu-container.menu-open {
+    display: flex;
+  }
+  .menu-container a {
+    margin: 10px 0;
+  }
+  .logo {
+    margin-left: 0;
+  }
+}
+
 @media (max-width: 600px) {
   .btn, .btn-dark { display: block; width: calc(100% - 40px); margin: 12px auto 0; }
-  .menu-container { display: none; }
   .navbar-container { padding: 0 12px; }
   .hero { min-height: 40vh; padding: 16px; }
 }

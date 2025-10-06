@@ -56,5 +56,26 @@
     <a class="logout-btn" id="logoutBtn" href="home.html">Logout </a>
   </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const username = localStorage.getItem("username");
+    const loginTime = localStorage.getItem("loginTime");
+
+    if (username) {
+      document.getElementById("userName").textContent = username;
+    }
+
+    if (loginTime) {
+      document.getElementById("loginTime").textContent = loginTime;
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", function(event) {
+      event.preventDefault();
+      localStorage.clear();
+      window.location.href = "login.html";
+    });
+  });
+</script>
+
 </body>
 </html>

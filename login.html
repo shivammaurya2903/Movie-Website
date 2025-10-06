@@ -33,6 +33,7 @@
     if (username) {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("username", username);
+      localStorage.setItem("loginTime", new Date().toLocaleString());
       alert("Login successful! Redirecting to home page.");
       window.location.href = "home.html";
     } else {

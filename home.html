@@ -15,6 +15,11 @@
             <div class="logo-container">
                 <h1 class="logo">🎬 Zinema</h1>
             </div>
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
             <div class="menu-container">
                 <a href="home.html">HOME</a>
                 <a href="error.html">MOVIES</a>
@@ -105,7 +110,7 @@
                 <div class="movie-list">
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/8.jpg" alt="">
-                            <span class="movie-list-item-title">OBLIVISION</span>
+                            <span class="movie-list-item-title">OBLIVION</span>
                             <p class="movie-list-item-desc">A lone agent uncovers secrets on a post-apocalyptic Earth.</p>
                             <div class="movie-item-actions">
                                 <button class="movie-list-item-button">Watch</button>
@@ -172,8 +177,8 @@
                 <div class="movie-list">
                     <div class="movie-list-item">
                         <img class="movie-list-item-img" src="img/14.jpg" alt="">
-                        <span class="movie-list-item-title">THE PATH OF GLOARY</span>
-                        <p class="movie-list-item-desc">An epic quest of honor and redemption along a hero's winding path.</p>
+<span class="movie-list-item-title">THE PATH OF GLORY</span>
+<p class="movie-list-item-desc">A harrowing tale of military injustice and the horrors of war, following soldiers accused of cowardice during WWI.</p>
                         <div class="movie-item-actions">
                             <button class="movie-list-item-button">Watch</button>
                             <button class="movie-list-item-watchlist">Add to Watchlist</button>
@@ -181,7 +186,7 @@
                     </div>
                     <div class="movie-list-item">
                         <img class="movie-list-item-img" src="img/2.jpeg" alt="">
-                        <span class="movie-list-item-title">STAR WARSS</span>
+                        <span class="movie-list-item-title">STAR WARS</span>
                         <p class="movie-list-item-desc">A grand space opera filled with daring pilots, strange planets, and starships.</p>
                         <div class="movie-item-actions">
                             <button class="movie-list-item-button">Watch</button>
@@ -199,8 +204,8 @@
                     </div>
                     <div class="movie-list-item">
                         <img class="movie-list-item-img" src="img/3.jpg" alt="">
-                        <span class="movie-list-item-title">STORM</span>
-                        <p class="movie-list-item-desc">A young hero battles inner doubts while swinging across the city to save lives.</p>
+<span class="movie-list-item-title">STORM</span>
+<p class="movie-list-item-desc">A meteorologist gains the ability to control the weather and uses it to fight crime.</p>
                         <div class="movie-item-actions">
                             <button class="movie-list-item-button">Watch</button>
                             <button class="movie-list-item-watchlist">Add to Watchlist</button>
@@ -208,8 +213,8 @@
                     </div>
                     <div class="movie-list-item">
                         <img class="movie-list-item-img" src="img/4.jpg" alt="">
-                        <span class="movie-list-item-title">1917</span>
-                        <p class="movie-list-item-desc">A powerful antihero returns to confront enemies and protect his land by any means.</p>
+<span class="movie-list-item-title">1917</span>
+<p class="movie-list-item-desc">Two young British soldiers during the First World War are given an impossible mission: deliver a message deep into enemy territory that will stop 1,600 men, and one of the soldiers' brothers, from walking straight into a deadly trap.</p>
                         <div class="movie-item-actions">
                             <button class="movie-list-item-button">Watch</button>
                             <button class="movie-list-item-watchlist">Add to Watchlist</button>
@@ -217,8 +222,8 @@
                     </div>
                     <div class="movie-list-item">
                         <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                        <span class="movie-list-item-title">AVENGERS</span>
-                        <p class="movie-list-item-desc">A team of unlikely antiheroes must work together for redemption and survival.</p>
+<span class="movie-list-item-title">AVENGERS</span>
+<p class="movie-list-item-desc">When an unexpected enemy emerges and threatens global safety and security, Nick Fury, director of the international peacekeeping agency known as S.H.I.E.L.D., finds himself in need of a team to pull the world back from the brink of disaster.</p>
                         <div class="movie-item-actions">
                             <button class="movie-list-item-button">Watch</button>
                             <button class="movie-list-item-watchlist">Add to Watchlist</button>
@@ -234,8 +239,8 @@
                 <div class="movie-list">
                     <div class="movie-list-item">
                         <img class="movie-list-item-img" src="img/17.jpg" alt="">
-                        <span class="movie-list-item-title">AQUAMAN</span>
-                        <p class="movie-list-item-desc">A minimalistic drama exploring identity and the quiet moments that shape us.</p>
+<span class="movie-list-item-title">AQUAMAN</span>
+<p class="movie-list-item-desc">Arthur Curry learns that he is the heir to the underwater kingdom of Atlantis, and must step forward to lead his people and be a hero to the world.</p>
                         <div class="movie-item-actions">
                             <button class="movie-list-item-button">Watch</button>
                             <button class="movie-list-item-watchlist">Add to Watchlist</button>
@@ -375,6 +380,20 @@
                 menu.appendChild(profileLink);
             }
         }
+  });
+  </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.querySelector(".menu-container");
+
+    if (hamburger && menu) {
+      hamburger.addEventListener("click", () => {
+        menu.classList.toggle("active");
+        hamburger.classList.toggle("active");
+      });
+    }
   });
 </script>
 
