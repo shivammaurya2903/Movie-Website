@@ -1,0 +1,299 @@
+/* Movies Page Styles */
+
+.movies-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px 0;
+  animation: fadeInSlideDown 1s ease-out;
+}
+
+.movies-title {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.movies-subtitle {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin: 0;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.movie-grid-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.movie-grid-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.movie-grid-item-img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-grid-item-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.movie-grid-item:hover .movie-grid-item-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.movie-grid-item-title {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.movie-grid-item-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.movie-grid-item-button,
+.movie-grid-item-watch,
+.movie-grid-item-watchlist {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.movie-grid-item-button {
+  background-color: #e50914;
+  color: #fff;
+}
+
+.movie-grid-item-button:hover {
+  background-color: #f40612;
+}
+
+.movie-grid-item-watch {
+  background-color: #e50914;
+  color: #fff;
+}
+
+.movie-grid-item-watch:hover {
+  background-color: #f40612;
+}
+
+.movie-grid-item-watchlist {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #666;
+}
+
+.movie-grid-item-watchlist:hover {
+  background-color: #444;
+}
+
+.movie-grid-item-watchlist.added {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .movies-title {
+    font-size: 2rem;
+  }
+
+  .movies-subtitle {
+    font-size: 1rem;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .movie-grid-item-img {
+    height: 250px;
+  }
+
+  .movie-grid-item-overlay {
+    padding: 15px;
+  }
+
+  .movie-grid-item-title {
+    font-size: 1rem;
+  }
+
+  .movie-grid-item-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .movie-grid-item-button,
+  .movie-grid-item-watch,
+  .movie-grid-item-watchlist {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .movie-grid-item-img {
+    height: 200px;
+  }
+
+  .movie-grid-item-overlay {
+    padding: 10px;
+  }
+
+  .movie-grid-item-title {
+    font-size: 0.9rem;
+  }
+
+  .movie-grid-item-button,
+  .movie-grid-item-watch,
+  .movie-grid-item-watchlist {
+    padding: 5px 8px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Loading indicator for infinite scroll */
+.loading-indicator {
+  text-align: center;
+  padding: 20px;
+  color: #ccc;
+  font-size: 1rem;
+  position: relative;
+}
+
+.loading-indicator.show {
+  display: block;
+}
+
+.loading-indicator.hide {
+  display: none;
+}
+
+.loading-indicator::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+/* Pulse animation for watchlist */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Fade-in animation for movie grid items */
+.movie-grid-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.movie-grid-item:nth-child(1) { animation-delay: 0.1s; }
+.movie-grid-item:nth-child(2) { animation-delay: 0.2s; }
+.movie-grid-item:nth-child(3) { animation-delay: 0.3s; }
+.movie-grid-item:nth-child(4) { animation-delay: 0.4s; }
+.movie-grid-item:nth-child(5) { animation-delay: 0.5s; }
+.movie-grid-item:nth-child(6) { animation-delay: 0.6s; }
+.movie-grid-item:nth-child(7) { animation-delay: 0.7s; }
+.movie-grid-item:nth-child(8) { animation-delay: 0.8s; }
+.movie-grid-item:nth-child(9) { animation-delay: 0.9s; }
+.movie-grid-item:nth-child(10) { animation-delay: 1.0s; }
+.movie-grid-item:nth-child(11) { animation-delay: 1.1s; }
+.movie-grid-item:nth-child(12) { animation-delay: 1.2s; }
+.movie-grid-item:nth-child(13) { animation-delay: 1.3s; }
+.movie-grid-item:nth-child(14) { animation-delay: 1.4s; }
+.movie-grid-item:nth-child(15) { animation-delay: 1.5s; }
+.movie-grid-item:nth-child(16) { animation-delay: 1.6s; }
+.movie-grid-item:nth-child(17) { animation-delay: 1.7s; }
+.movie-grid-item:nth-child(18) { animation-delay: 1.8s; }
+.movie-grid-item:nth-child(19) { animation-delay: 1.9s; }
+.movie-grid-item:nth-child(20) { animation-delay: 2.0s; }
+
+/* Keyframe animations */
+@keyframes fadeInSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

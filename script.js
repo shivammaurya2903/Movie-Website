@@ -197,6 +197,7 @@ function stopAutoSlide() {
 
 function pauseOnHover() {
   const banner = document.querySelector('.banner');
+  if (!banner) return; // Only run if banner exists
   banner.addEventListener('mouseenter', () => {
     isPaused = true;
   });
@@ -205,15 +206,17 @@ function pauseOnHover() {
   });
 }
 
-// Event listeners for arrows
-document.getElementById('prevBtn').addEventListener('click', prevSlide);
-document.getElementById('nextBtn').addEventListener('click', nextSlide);
+// Event listeners for arrows (only if elements exist)
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
 // Watchlist functionality with icon toggle
 function initializeWatchlist() {
   document.addEventListener('click', (e) => {
-    if (e.target.closest('.movie-list-item-watchlist')) {
-      const button = e.target.closest('.movie-list-item-watchlist');
+    if (e.target.closest('.movie-list-item-watchlist') || e.target.closest('.movie-grid-item-watchlist')) {
+      const button = e.target.closest('.movie-list-item-watchlist') || e.target.closest('.movie-grid-item-watchlist');
       const icon = button.querySelector('i');
 
       // Toggle added state
@@ -233,13 +236,128 @@ function initializeWatchlist() {
   });
 }
 
+// Global variables for infinite scroll
+let currentPage = 0;
+const moviesPerPage = 20;
+let isLoading = false;
+
+// Populate movies grid for movies.html page with infinite scroll
+async function populateMoviesGrid() {
+  const moviesGrid = document.getElementById('moviesGrid');
+  if (!moviesGrid) return; // Only run on movies page
+
+  if (currentPage === 0) {
+    allMovies = await loadMovies();
+    // Shuffle the movies array for random order
+    allMovies = shuffleArray(allMovies);
+  }
+
+  if (isLoading) return;
+  isLoading = true;
+
+  const startIndex = currentPage * moviesPerPage;
+  const endIndex = Math.min(startIndex + moviesPerPage, allMovies.length);
+
+  // Show loading indicator
+  const loadingIndicator = document.getElementById('loadingIndicator');
+  if (loadingIndicator) {
+    loadingIndicator.classList.remove('hide');
+    loadingIndicator.classList.add('show');
+  }
+
+  for (let i = startIndex; i < endIndex; i++) {
+    const movie = allMovies[i];
+    const item = document.createElement('div');
+    item.className = 'movie-grid-item';
+
+    item.innerHTML = `
+      <img class="movie-grid-item-img" src="${movie.image_url}" alt="${movie.clean_title}" onerror="this.src='https://via.placeholder.com/250x350?text=No+Image'">
+      <div class="movie-grid-item-overlay">
+        <h3 class="movie-grid-item-title">${movie.clean_title}</h3>
+        <div class="movie-grid-item-actions">
+          <a href="${movie.movie_link}" target="_blank" class="movie-grid-item-button"><i class="fas fa-download"></i> Download</a>
+          <a href="error.html" class="movie-grid-item-watch"><i class="fas fa-play"></i> Watch</a>
+          <button class="movie-grid-item-watchlist"><i class="fas fa-plus"></i> Add to Watchlist</button>
+        </div>
+      </div>
+    `;
+
+    // Add animation class for staggered effect
+    item.style.animationDelay = `${(i % 20) * 0.1}s`;
+
+    moviesGrid.appendChild(item);
+  }
+
+  // Hide loading indicator
+  if (loadingIndicator) {
+    loadingIndicator.classList.remove('show');
+    loadingIndicator.classList.add('hide');
+  }
+
+  currentPage++;
+  isLoading = false;
+
+  // Add Load More button if there are more movies
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  if (endIndex < allMovies.length) {
+    if (!loadMoreBtn) {
+      const btn = document.createElement('button');
+      btn.id = 'loadMoreBtn';
+      btn.className = 'load-more-btn';
+      btn.textContent = 'Load More Movies';
+      btn.addEventListener('click', populateMoviesGrid);
+      moviesGrid.parentNode.appendChild(btn);
+    }
+  } else {
+    if (loadMoreBtn) {
+      loadMoreBtn.remove();
+    }
+  }
+}
+
+// Shuffle array function using Fisher-Yates algorithm
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// Infinite scroll functionality
+function handleScroll() {
+  const moviesGrid = document.getElementById('moviesGrid');
+  if (!moviesGrid) return;
+
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+
+  // Load more when user is near the bottom (100px threshold)
+  if (scrollTop + windowHeight >= documentHeight - 100) {
+    const totalMoviesLoaded = currentPage * moviesPerPage;
+    if (totalMoviesLoaded < allMovies.length && !isLoading) {
+      populateMoviesGrid();
+    }
+  }
+}
+
 // Run on page load
 document.addEventListener('DOMContentLoaded', () => {
   populateMovies();
-  createDots();
-  showSlide(currentSlide); // Initialize first slide
-  startAutoSlide();
-  pauseOnHover();
+  populateMoviesGrid(); // Add this for movies page
+  if (slides.length > 0) {
+    createDots();
+    showSlide(currentSlide); // Initialize first slide
+    startAutoSlide();
+    pauseOnHover();
+  }
   initializeWatchlist();
+
+  // Add scroll event listener for infinite scroll on movies page
+  const moviesGrid = document.getElementById('moviesGrid');
+  if (moviesGrid) {
+    window.addEventListener('scroll', handleScroll);
+  }
 });
 
