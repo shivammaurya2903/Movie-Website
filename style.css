@@ -117,9 +117,9 @@ body {
   flex: 1;
 }
 
-.logo {
-  font-size: 30px;
-  color: #4dbf00;
+.logo img{
+  margin-left: 5rem;
+  height: 80px;
 }
 
 .menu-container {
@@ -322,14 +322,14 @@ body.user-is-logged-in .login-button {
   text-align: center;
 }
 
-
-
-
-
 .movie-list-container {
   padding: 30px 20px;
   margin: var(--space-lg) 0;
   text-align: center;
+}
+
+.movie-list-title {
+  margin-bottom: 40px;
 }
 
 .movie-list-wrapper {

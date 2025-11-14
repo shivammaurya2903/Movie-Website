@@ -1,12 +1,6 @@
+# TODO: Implement Scroll-Based Loading of Random Movies
 
-# TODO: Add Effects and Animations with Icons
-
-- [x] Update index.html: Add Font Awesome CDN link for icons
-- [x] Update index.html: Add icons to navbar menu items (e.g., home, search, about)
-- [x] Update index.html: Add icons to movie card buttons (e.g., download, watchlist)
-- [x] Update index.html: Add icons to banner arrows and dots if applicable
-- [x] Update style.css: Add bounce or pulse animations for icons on hover
-- [x] Update style.css: Enhance hover effects for movie cards with icon scaling and color transitions
-- [x] Update style.css: Add fade-in animations for movie lists and sections on page load
-- [x] Update style.css: Add slide-in animations for navbar and footer elements
-- [x] Update sript.js: Add JavaScript for dynamic icon animations (e.g., toggle states for watchlist)
+- [x] Add a global flag `isLoading` to prevent multiple simultaneous loads.
+- [x] Create a `loadRandomMovies` function that selects 10 random movies from `allMovies`, creates a new `movie-list-container` section titled "More Movies", and appends it to the container.
+- [x] Add a scroll event listener to the window that checks if the user is near the bottom of the page (e.g., within 100px), and if not loading, calls `loadRandomMovies`.
+- [x] Ensure the new section uses the same HTML structure as existing sections for consistency.
