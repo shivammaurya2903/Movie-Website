@@ -1,17 +1,44 @@
-:root { --navbar-height: 100px; }
 
-*{
-  box-sizing: border-box;
+* {
+  margin: 0;
   padding: 0;
-  text-decoration: none;  
-  margin: 0;
-  scrollbar-color: #4db800 transparent;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #4dbf00 transparent;
 }
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
   background-color: #000000;
-  color: #fff;
+  color: var(--text-color);
+}
+
+
+:root {
+  --space-xs: 6px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --text-color: #ffffff; /* crystal white */
 }
 
 .navbar {
@@ -20,40 +47,36 @@ body {
   background-color: black;
   position: sticky;
   top: 0;
-  display: flex;
-  align-items: center;
-  z-index: 100;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  justify-content: space-between;
-  padding: 0 20px;
+  z-index: 1000;
+  text-decoration: none;
+  margin-bottom: var(--space-md);
 }
 
 .navbar-container {
   display: flex;
   align-items: center;
-  padding: 0 50px;
+  justify-content: space-between;
+  padding: 0 30px;
   height: 100%;
-  color: white;
   font-family: "Sen", sans-serif;
 }
 
+.logo-container {
+  flex: 1;
+}
 
 .logo {
   font-size: 30px;
   color: #4dbf00;
-  margin-left: 30px;
 }
 
 .menu-container {
-  margin-right: 40px;
-  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 30px;
   height: 60px;
-  gap: 24px;
   font-family: 'Sen', sans-serif;
-  flex-wrap: wrap; /* wrap on smaller widths */
 }
 
 .menu-container a {
@@ -61,17 +84,16 @@ body {
   font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
-  transition: color 0.3s ease;
   position: relative;
+  transition: color 0.3s ease;
+  scroll-behavior: smooth;
 }
-
 
 .menu-container a:hover,
 .menu-container a:focus {
   color: #4dbf00;
   outline: none;
 }
-
 
 .menu-container a::after {
   content: '';
@@ -89,168 +111,421 @@ body {
   width: 100%;
 }
 
-
-.hero {
-  margin: 10px 30px;
-  margin-bottom: 40px;
-  position: relative;
-  background: url('img/hero-bg.jpg') center/cover no-repeat;
-  background-size: cover;
-  object-fit: cover;
-  min-height: 60vh;
-  padding: 28px 20px;
-  padding-top: calc(28px + 0.35 * var(--navbar-height)); /* prevent navbar overlap */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
+.bar {
+  width: 28px;
+  height: 4px;
+  background-color: #4dbf00;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 0 5px #4dbf00;
 }
 
-.hero::before {
-  content: "";
+
+
+body.user-is-logged-in .profile-button {
+  display: inline-block;
+}
+
+body.user-is-logged-in .login-button {
+  display: none;
+}
+
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 30vh;
+  }
+}
+
+.banner-slide {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+  transform: translateX(100%);
+  transition: transform 0.8s ease-in-out;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
+.banner-slide.active {
+  transform: translateX(0);
 }
 
-.hero-content h1 {
-  margin: 0 0 12px 0;
-  font-size: clamp(1.6rem, 3.5vw, 3rem);
+.banner-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.hero-content p {
-  margin: 0 0 12px 0;
-  font-size: clamp(1rem, 1.2vw, 1.2rem);
-  color: #f5f5f5;
-}
-
-.btn {
-  background-color: #4db800;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  display: inline-block;
-  margin-top: 12px;
-}
-
-.highlight-banner {
-  background-color: #4db800;
+.banner-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  padding: 40px 20px 20px;
   text-align: center;
-  padding: 1rem;
-  font-weight: bold;
 }
 
-.btn-dark {
-  background-color: #000;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  margin-left: 1rem;
-  text-decoration: none;
-  border-radius: 4px;
-  display: inline-block;
-  margin-top: 12px;
+.banner-overlay h2 {
+  font-size: 2.5rem;
+  margin: 0 0 10px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.banner-overlay p {
+  font-size: 1.2rem;
+  margin: 0;
+  opacity: 0.9;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
 }
 
 @media (max-width: 768px) {
-  .menu-container {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: black;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-    display: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  .banner-overlay h2 {
+    font-size: 1.8rem;
   }
-  .menu-container.menu-open {
-    display: flex;
-  }
-  .menu-container a {
-    margin: 10px 0;
-  }
-  .logo {
-    margin-left: 0;
+  .banner-overlay p {
+    font-size: 1rem;
   }
 }
 
-@media (max-width: 600px) {
-  .btn, .btn-dark { display: block; width: calc(100% - 40px); margin: 12px auto 0; }
-  .navbar-container { padding: 0 12px; }
-  .hero { min-height: 40vh; padding: 16px; }
-}
-
-@media (max-width: 992px) {
-  .navbar-container { padding: 0 24px; }
-  .menu-container { gap: 14px; margin-right: 20px; }
-  .hero { min-height: 50vh; padding: 20px; }
-}
-
-@media (max-width: 1200px) {
-  .menu-container { margin-right: 20px; }
-}
-
-/* Offset main content instead of changing navbar height */
-.container { margin-top: var(--navbar-height); }
-
-.footer {
-  align-content: bottom;
+.banner-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
   color: white;
-  padding: 40px 20px;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
+  border: none;
+  padding: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease;
 }
+
+.banner-arrow:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.banner-arrow-prev {
+  left: 20px;
+}
+
+.banner-arrow-next {
+  right: 20px;
+}
+
+.banner-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.banner-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.banner-dot.active {
+  background: #4dbf00;
+}
+
+.container {
+  background-color: #000000;
+  padding: 24px;
+  margin: 0 auto;
+  max-width: 100vw;
+  flex: 1 0 auto;
+}
+
+
+.content-container {
+  background-image: url('img/19.png');
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+}
+
+#featured {
+  padding: 20px;
+  background-image: url('img/20.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.featured-title {
+  padding: 50px 0 10px 40px;
+  width: 200px;
+}
+
+.featured-content {
+  margin: var(--space-sm) 0 var(--space-lg) 0;
+}
+.featured-desc {
+  width: 500px;
+  color: var(--text-color);
+  margin: 30px 0;
+  padding-left: 40px;
+}
+
+.featured-button {
+  background-color: #4dbf00;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+.movie-list-container {
+  padding: 30px 20px;
+  margin: var(--space-lg) 0;
+}
+
+.movie-list-wrapper {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.movie-list {
+  display: flex;
+  align-items: flex-start;
+  height: auto;
+  transition: all 0.4s ease-in-out;
+  gap: var(--space-md);
+}
+
+/* Make list wrap so items don't overlap on narrow screens */
+.movie-list {
+  flex-wrap: wrap;
+}
+
+.movie-list-item {
+  margin-right: 16px;
+  position: relative;
+  width: 320px;
+  min-height: 350px;
+  overflow: hidden;
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* let items shrink/grow inside the flex layout */
+.movie-list-item {
+  flex: 0 1 320px;
+  box-sizing: border-box;
+}
+
+.movie-list-item-img {
+  width: 100%;
+  height: 250px;
+  display: block;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  will-change: transform;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: #000000;
+}
+
+.movie-list-item:hover .movie-list-item-img {
+  transform: scale(1.06);
+  opacity: 0.9;
+}
+
+.movie-list-item-title,
+.movie-list-item-desc,
+.movie-list-item-button {
+  /* ensure these elements are in normal flow inside the card */
+  position: static !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  left: auto !important;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: auto;
+}
+
+.movie-list-item-title {
+  font-weight: bold;
+  background: transparent;
+  padding: 6px 0;
+  color: var(--text-color);
+  width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+}
+
+.movie-list-item-desc {
+  font-size: 14px;
+  background: transparent;
+  padding: 6px 0 0 0;
+  color: var(--text-color);
+  width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movie-list-item-button {
+  padding: 10px;
+  background-color: #4dbf00;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Make movie item buttons inline and compact so two buttons can sit side-by-side */
+.movie-list-item .movie-list-item-button {
+  /* override previous compact layout: make buttons fill the card width */
+  display: block;
+  width: 100%;
+  margin: 0 0 0 0;
+  box-sizing: border-box;
+}
+
+/* Static Add to Watchlist button styling (matches Watch button) */
+.movie-list-item-watchlist {
+  padding: 10px;
+  background-color: #4dbf00;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.movie-item-actions {
+  display: flex;
+  flex-direction: column; /* stack buttons vertically */
+  gap: 8px;
+  align-items: stretch;
+  margin-top: 8px;
+  /* make actions fill the card's content width so buttons line up with the image */
+  width: 100%;
+  margin-left: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Combined Watch control: main watch button with a small inline toggle for watchlist */
+.watch-group {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.watch-main {
+  position: relative; /* position toggle inside */
+  padding: 10px 48px 10px 14px; /* reserve space on the right for toggle */
+  background-color: #4dbf00;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%; /* full width of the card */
+  box-sizing: border-box;
+}
+
+.watch-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 28px;
+  padding: 0 6px;
+  background-color: rgba(255,255,255,0.06);
+  color: white;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.watch-toggle.added {
+  background-color: #2f8e00;
+  color: #eaffea;
+}
+
+/* Ensure any button in the actions area stretches to card width */
+.movie-item-actions button {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Make sure standalone watch buttons (if any) also match card width */
+.movie-list-item .watch-main {
+  width: 100%;
+}
+
+.site-footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid #4dbf00;
+  margin-top: auto;
+}
+
+
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
-.footer-logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #4dbf00;
-  margin-bottom: 20px;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: white;
-  text-decoration: none;
+.footer-container p {
   font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover,
-.footer-links a:focus {
-  color: #4dbf00;
-  outline: none;
-}
-
-
-.footer-copy {
-  font-size: 12px;
-  color: #aaa;
+  margin: 0;
 }

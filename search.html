@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Movies - Zinema</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="search.css">
+</head>
+
+<body>
+    <div class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">🎬 Zinema</h1>
+            </div>
+
+            <div class="menu-container">
+                <a href="index.html">HOME</a>
+                <a href="search.html">SEARCH MOVIES</a>
+                <a href="about.html">ABOUT</a>
+                <a href="profile.html" class="auth-link profile-button">PROFILE</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="movie-list-container">
+            <h1 class="movie-list-title">Search Results</h1>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for movies..." class="search-input">
+                <button id="search-button" class="search-button">Search</button>
+            </div>
+        </div>
+            <div class="movie-list-wrapper">
+                <div class="search-results" id="search-results">
+                    <!-- Search results will be populated here -->
+                </div>
+            </div>
+        
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Shivam Maurya. All rights reserved.</p>
+        </div>
+    </footer>
+
+<script src="sript.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+        const menu = document.querySelector('.menu-container');
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        const username = localStorage.getItem('username');
+
+        if (!menu) return;
+
+
+        if (isLoggedIn === 'true' && username) {
+            const loginLink = document.querySelector('.login-button');
+            if (loginLink) loginLink.style.display = 'none';
+
+            if (!document.querySelector('.profile-button')) {
+                const profileLink = document.createElement('a');
+                profileLink.href = 'profile.html';
+                profileLink.className = 'auth-link profile-button';
+                profileLink.textContent = 'PROFILE';
+                profileLink.style.marginLeft = '10px';
+                menu.appendChild(profileLink);
+            }
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const searchResults = document.getElementById('search-results');
+
+        let allMovies = [];
+
+        // Load movies from CSV using proper parser
+        fetch('assets/hdhub_data.csv')
+            .then(response => response.text())
+            .then(data => {
+                allMovies = parseCSV(data);
+                // Display random movies on load
+                performSearch();
+            })
+            .catch(error => console.error('Error loading movies:', error));
+
+        function performSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+            if (!query) {
+                // Show random movies if no query
+                const randomMovies = getRandomMovies(allMovies, 10);
+                displaySearchResults(randomMovies);
+                document.querySelector('.movie-list-title').textContent = 'Recommended Movies';
+                return;
+            }
+
+            const filteredMovies = allMovies.filter(movie =>
+                movie.clean_title.toLowerCase().includes(query) ||
+                movie.about.toLowerCase().includes(query)
+            );
+
+            displaySearchResults(filteredMovies);
+            document.querySelector('.movie-list-title').textContent = 'Search Results';
+        }
+
+        function getRandomMovies(movies, count) {
+            const shuffled = [...movies].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        function displaySearchResults(movies) {
+            searchResults.innerHTML = '';
+
+            if (movies.length === 0) {
+                searchResults.innerHTML = '<p>No movies found matching your search.</p>';
+                return;
+            }
+
+            movies.forEach(movie => {
+                const movieItem = document.createElement('div');
+                movieItem.className = 'movie-list-item';
+                movieItem.innerHTML = `
+                    <img src="${movie.image_url}" alt="${movie.clean_title}" class="movie-list-item-img">
+                    <h5 class="movie-list-item-title">${movie.clean_title}</h5>
+                    <button class="movie-list-item-button" onclick="window.open('${movie.movie_link}', '_blank')">Download</button>
+                `;
+                searchResults.appendChild(movieItem);
+            });
+        }
+
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+  });
+  </script>
+
+
+
+</body>
+
+</html>
