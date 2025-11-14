@@ -28,7 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Roboto", sans-serif;
-  background-color: #000000;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
   color: var(--text-color);
 }
 
@@ -44,12 +44,16 @@ body {
 .navbar {
   width: 100%;
   height: 100px;
-  background-color: black;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 1000;
   text-decoration: none;
   margin-bottom: var(--space-md);
+  border-bottom: 1px solid rgba(77, 191, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-container {
@@ -334,6 +338,13 @@ body.user-is-logged-in .login-button {
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* let items shrink/grow inside the flex layout */
@@ -353,6 +364,11 @@ body.user-is-logged-in .login-button {
   z-index: 1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   background-color: #000000;
+}
+
+.movie-list-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
 }
 
 .movie-list-item:hover .movie-list-item-img {
@@ -376,9 +392,10 @@ body.user-is-logged-in .login-button {
 }
 
 .movie-list-item-title {
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 1.1rem;
   background: transparent;
-  padding: 6px 0;
+  padding: 8px 0;
   color: var(--text-color);
   width: 100%;
   white-space: normal;
@@ -389,6 +406,7 @@ body.user-is-logged-in .login-button {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-align: center;
+  letter-spacing: 0.5px;
 }
 
 .movie-list-item-desc {
@@ -407,14 +425,22 @@ body.user-is-logged-in .login-button {
 }
 
 .movie-list-item-button {
-  padding: 10px;
-  background-color: #4dbf00;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #4dbf00 0%, #2f8e00 100%);
   color: white;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
   font-weight: bold;
   text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(77, 191, 0, 0.3);
+}
+
+.movie-list-item-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(77, 191, 0, 0.4);
+  background: linear-gradient(135deg, #2f8e00 0%, #4dbf00 100%);
 }
 
 /* Make movie item buttons inline and compact so two buttons can sit side-by-side */

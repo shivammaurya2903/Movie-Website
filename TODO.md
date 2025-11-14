@@ -13,3 +13,13 @@
 - [x] Update sript.js: Implement slide transition logic (left/right slide instead of fade)
 - [x] Update sript.js: Add functionality for prev/next buttons and dot navigation
 - [x] Update sript.js: Add pause on hover for better user experience
+
+# TODO: Modernize Home Page Styling
+
+- [ ] Update style.css: Add gradient background to body or sections for modern look
+- [ ] Update style.css: Enhance navbar with glassmorphism effect and better shadows
+- [ ] Update style.css: Modernize movie cards with rounded corners, improved shadows, and hover animations
+- [ ] Update style.css: Improve button styles with gradients and hover effects
+- [ ] Update style.css: Enhance typography with better font weights and spacing
+- [ ] Update style.css: Add subtle animations and transitions for better UX
+- [ ] Update style.css: Improve footer with modern styling
