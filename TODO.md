@@ -1,25 +1,12 @@
-# TODO: Fix Banner Image Styling
 
-- [x] Update style.css: Make banner height responsive (50vh on desktop, 30vh on mobile) to prevent cropping and improve display across screen sizes
-- [x] Update style.css: Change banner image object-fit from cover to contain to prevent cropping and show full images
+# TODO: Add Effects and Animations with Icons
 
-# TODO: Enhance Banner Attractiveness
-
-- [x] Update index.html: Add navigation arrows (prev/next buttons) for manual slide control
-- [x] Update index.html: Add indicator dots for slide navigation
-- [x] Update index.html: Add text overlays on each slide with movie-related slogans or titles
-- [x] Update style.css: Add styles for arrows, dots, text overlays, and slide transition (from fade to slide)
-- [x] Update style.css: Add dark overlay on banner images for better text contrast
-- [x] Update sript.js: Implement slide transition logic (left/right slide instead of fade)
-- [x] Update sript.js: Add functionality for prev/next buttons and dot navigation
-- [x] Update sript.js: Add pause on hover for better user experience
-
-# TODO: Modernize Home Page Styling
-
-- [ ] Update style.css: Add gradient background to body or sections for modern look
-- [ ] Update style.css: Enhance navbar with glassmorphism effect and better shadows
-- [ ] Update style.css: Modernize movie cards with rounded corners, improved shadows, and hover animations
-- [ ] Update style.css: Improve button styles with gradients and hover effects
-- [ ] Update style.css: Enhance typography with better font weights and spacing
-- [ ] Update style.css: Add subtle animations and transitions for better UX
-- [ ] Update style.css: Improve footer with modern styling
+- [x] Update index.html: Add Font Awesome CDN link for icons
+- [x] Update index.html: Add icons to navbar menu items (e.g., home, search, about)
+- [x] Update index.html: Add icons to movie card buttons (e.g., download, watchlist)
+- [x] Update index.html: Add icons to banner arrows and dots if applicable
+- [x] Update style.css: Add bounce or pulse animations for icons on hover
+- [x] Update style.css: Enhance hover effects for movie cards with icon scaling and color transitions
+- [x] Update style.css: Add fade-in animations for movie lists and sections on page load
+- [x] Update style.css: Add slide-in animations for navbar and footer elements
+- [x] Update sript.js: Add JavaScript for dynamic icon animations (e.g., toggle states for watchlist)

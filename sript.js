@@ -123,8 +123,8 @@ async function populateMovies() {
         <img class="movie-list-item-img" src="${movie.image_url}" alt="${movie.clean_title}">
         <span class="movie-list-item-title">${movie.clean_title}</span>
         <div class="movie-item-actions">
-          <a href="${movie.movie_link}" target="_blank" class="movie-list-item-button">Download</a>
-          <button class="movie-list-item-watchlist">Add to Watchlist</button>
+          <a href="${movie.movie_link}" target="_blank" class="movie-list-item-button"><i class="fas fa-download"></i> Download</a>
+          <button class="movie-list-item-watchlist"><i class="fas fa-plus"></i> Add to Watchlist</button>
         </div>
       `;
 
@@ -209,6 +209,30 @@ function pauseOnHover() {
 document.getElementById('prevBtn').addEventListener('click', prevSlide);
 document.getElementById('nextBtn').addEventListener('click', nextSlide);
 
+// Watchlist functionality with icon toggle
+function initializeWatchlist() {
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.movie-list-item-watchlist')) {
+      const button = e.target.closest('.movie-list-item-watchlist');
+      const icon = button.querySelector('i');
+
+      // Toggle added state
+      button.classList.toggle('added');
+
+      if (button.classList.contains('added')) {
+        icon.className = 'fas fa-check';
+        button.innerHTML = '<i class="fas fa-check"></i> Added to Watchlist';
+        // Add animation class
+        button.classList.add('pulse');
+        setTimeout(() => button.classList.remove('pulse'), 300);
+      } else {
+        icon.className = 'fas fa-plus';
+        button.innerHTML = '<i class="fas fa-plus"></i> Add to Watchlist';
+      }
+    }
+  });
+}
+
 // Run on page load
 document.addEventListener('DOMContentLoaded', () => {
   populateMovies();
@@ -216,5 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
   showSlide(currentSlide); // Initialize first slide
   startAutoSlide();
   pauseOnHover();
+  initializeWatchlist();
 });
 

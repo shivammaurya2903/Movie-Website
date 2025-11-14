@@ -18,25 +18,26 @@
             </div>
 
             <div class="menu-container">
-                <a href="index.html">HOME</a>
-                <a href="search.html">SEARCH MOVIES</a>
-                <a href="about.html">ABOUT</a>
+                <a href="index.html"><i class="fas fa-home"></i> HOME</a>
+                <a href="search.html"><i class="fas fa-search"></i> SEARCH MOVIES</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> ABOUT</a>
             </div>
         </div>
     </div>
     <div class="container">
-        <div class="movie-list-container">
+        <div class="movie-list-container fade-in">
             <h1 class="movie-list-title">Search Results</h1>
             <div class="search-container">
                 <input type="text" id="search-input" placeholder="Search for movies..." class="search-input">
-                <button id="search-button" class="search-button">Search</button>
+                <button id="search-button" class="search-button"><i class="fas fa-search"></i> Search</button>
             </div>
         </div>
             <div class="movie-list-wrapper">
-                <div class="search-results" id="search-results">
+                <div class="search-results fade-in" id="search-results">
                     <!-- Search results will be populated here -->
                 </div>
             </div>
+
         
 
     </div>
@@ -126,7 +127,10 @@
                 movieItem.innerHTML = `
                     <img src="${movie.image_url}" alt="${movie.clean_title}" class="movie-list-item-img">
                     <h5 class="movie-list-item-title">${movie.clean_title}</h5>
-                    <button class="movie-list-item-button" onclick="window.open('${movie.movie_link}', '_blank')">Download</button>
+                    <div class="movie-item-actions">
+                        <a href="${movie.movie_link}" target="_blank" class="movie-list-item-button"><i class="fas fa-download"></i> Download</a>
+                        <button class="movie-list-item-watchlist"><i class="fas fa-plus"></i> Add to Watchlist</button>
+                    </div>
                 `;
                 searchResults.appendChild(movieItem);
             });

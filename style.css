@@ -16,6 +16,54 @@
   scrollbar-color: #4dbf00 transparent;
 }
 
+/* Fade-in animation for sections */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Slide-in animation for navbar */
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar {
+  animation: slideInDown 0.6s ease-out;
+}
+
+/* Slide-in animation for footer */
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.site-footer {
+  animation: slideInUp 0.6s ease-out;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -91,12 +139,24 @@ body {
   position: relative;
   transition: color 0.3s ease;
   scroll-behavior: smooth;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .menu-container a:hover,
 .menu-container a:focus {
   color: #4dbf00;
   outline: none;
+}
+
+.menu-container a i {
+  transition: transform 0.3s ease;
+}
+
+.menu-container a:hover i,
+.menu-container a:focus i {
+  transform: scale(1.1);
 }
 
 .menu-container a::after {
@@ -446,6 +506,14 @@ body.user-is-logged-in .login-button {
   background: linear-gradient(135deg, #2f8e00 0%, #4dbf00 100%);
 }
 
+.movie-list-item-button i {
+  transition: transform 0.3s ease;
+}
+
+.movie-list-item-button:hover i {
+  transform: scale(1.1);
+}
+
 /* Make movie item buttons inline and compact so two buttons can sit side-by-side */
 .movie-list-item .movie-list-item-button {
   /* override previous compact layout: make buttons fill the card width */
@@ -464,6 +532,41 @@ body.user-is-logged-in .login-button {
   border: none;
   cursor: pointer;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.movie-list-item-watchlist:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(77, 191, 0, 0.4);
+}
+
+.movie-list-item-watchlist i {
+  transition: transform 0.3s ease;
+}
+
+.movie-list-item-watchlist:hover i {
+  transform: scale(1.1);
+}
+
+/* Pulse animation for watchlist button */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 0.3s ease-in-out;
 }
 
 .movie-item-actions {
