@@ -259,6 +259,7 @@ body.user-is-logged-in .login-button {
   margin: 0 auto;
   max-width: 100vw;
   flex: 1 0 auto;
+  text-align: center;
 }
 
 
@@ -307,6 +308,7 @@ body.user-is-logged-in .login-button {
 .movie-list-container {
   padding: 30px 20px;
   margin: var(--space-lg) 0;
+  text-align: center;
 }
 
 .movie-list-wrapper {
@@ -320,6 +322,7 @@ body.user-is-logged-in .login-button {
   height: auto;
   transition: all 0.4s ease-in-out;
   gap: var(--space-md);
+  justify-content: center;
 }
 
 /* Make list wrap so items don't overlap on narrow screens */
@@ -328,7 +331,7 @@ body.user-is-logged-in .login-button {
 }
 
 .movie-list-item {
-  margin-right: 16px;
+  margin: 0 auto 16px;
   position: relative;
   width: 320px;
   min-height: 350px;
@@ -336,7 +339,7 @@ body.user-is-logged-in .login-button {
   padding: var(--space-sm);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
