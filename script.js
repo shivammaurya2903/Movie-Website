@@ -79,7 +79,7 @@ function parseCSV(text) {
 // Load CSV from a folder
 async function loadMovies() {
   try {
-    const res = await fetch("assets/hdhub_data.csv");
+    const res = await fetch("assets/hdhub4u_data.csv");
     const text = await res.text();
     const movies = parseCSV(text);
     console.log("Movies Loaded:", movies);

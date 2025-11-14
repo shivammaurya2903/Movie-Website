@@ -48,30 +48,10 @@
         </div>
     </footer>
 
-<script src="sript.js"></script>
+<script src="script.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-        const menu = document.querySelector('.menu-container');
-        const isLoggedIn = localStorage.getItem('isLoggedIn');
-        const username = localStorage.getItem('username');
-
-        if (!menu) return;
-
-
-        if (isLoggedIn === 'true' && username) {
-            const loginLink = document.querySelector('.login-button');
-            if (loginLink) loginLink.style.display = 'none';
-
-            if (!document.querySelector('.profile-button')) {
-                const profileLink = document.createElement('a');
-                profileLink.href = 'profile.html';
-                profileLink.className = 'auth-link profile-button';
-                profileLink.textContent = 'PROFILE';
-                profileLink.style.marginLeft = '10px';
-                menu.appendChild(profileLink);
-            }
-        }
-
+        
         // Search functionality
         const searchInput = document.getElementById('search-input');
         const searchButton = document.getElementById('search-button');
@@ -80,7 +60,7 @@
         let allMovies = [];
 
         // Load movies from CSV using proper parser
-        fetch('assets/hdhub_data.csv')
+        fetch('assets/hdhub4u_data.csv')
             .then(response => response.text())
             .then(data => {
                 allMovies = parseCSV(data);

@@ -323,47 +323,8 @@ body.user-is-logged-in .login-button {
 }
 
 
-.content-container {
-  background-image: url('img/19.png');
-  background-size: cover;
-  background-position: center;
-  height: 70vh;
-  margin-bottom: var(--space-lg);
-  padding: var(--space-md);
-}
 
-#featured {
-  padding: 20px;
-  background-image: url('img/20.png');
-  background-size: cover;
-  background-position: center;
-}
 
-.featured-title {
-  padding: 50px 0 10px 40px;
-  width: 200px;
-}
-
-.featured-content {
-  margin: var(--space-sm) 0 var(--space-lg) 0;
-}
-.featured-desc {
-  width: 500px;
-  color: var(--text-color);
-  margin: 30px 0;
-  padding-left: 40px;
-}
-
-.featured-button {
-  background-color: #4dbf00;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  font-weight: bold;
-  margin-left: 50px;
-  cursor: pointer;
-}
 
 .movie-list-container {
   padding: 30px 20px;
