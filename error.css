@@ -2,9 +2,9 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #000000;
-  color: #fff;
-  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  color: var(--text-color);
+  font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,17 +14,20 @@ body {
 
 .error-container {
   text-align: center;
-  max-width: 600px;
-  padding: 2rem;
-  background-color: #0f0f0f;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #4dbf00;
+  max-width: 1000px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(77, 191, 0, 0.1);
 }
 
 
 .error-container h1 {
-  font-size: 6rem;
-  margin-bottom: 1rem;
+  font-size: 5rem;
+  margin-bottom: 0.5rem;
   color: #4dbf00;
   letter-spacing: 2px;
 }
@@ -32,23 +35,84 @@ body {
 
 .error-container p {
   font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: #ccc;
 }
 
 
 .maintenance-msg {
   font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
   color: #aaa;
+}
+
+.error-suggestions {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.error-suggestions h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #4dbf00;
+  text-align: center;
+}
+
+.error-suggestions p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+  text-align: center;
+}
+
+.suggestion-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.suggestion-btn {
+  background: rgba(77, 191, 0, 0.1);
+  color: #4dbf00;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid rgba(77, 191, 0, 0.3);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.suggestion-btn:hover {
+  background: rgba(77, 191, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(77, 191, 0, 0.2);
+}
+
+.movie-quote {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #aaa;
+  text-align: center;
+  margin: 0;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border-left: 3px solid #4dbf00;
 }
 
 
 .error-gif {
   display: block;
-  margin: 0 auto 2rem auto;
-  max-width: 400px;
+  margin: 0 auto 1rem auto;
+  max-width: 450px;
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
@@ -57,17 +121,22 @@ body {
 
 
 .btn {
-  background-color: #4dbf00;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #4dbf00 0%, #2f8e00 100%);
+  color: white;
+  padding: 12px 20px;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 12px;
+  border: none;
   font-weight: bold;
-  transition: background-color 0.3s;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(77, 191, 0, 0.3);
 }
 
 .btn:hover {
-  background-color: #2f8e00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(77, 191, 0, 0.4);
+  background: linear-gradient(135deg, #2f8e00 0%, #4dbf00 100%);
 }
 
 
@@ -93,6 +162,28 @@ body {
 
   .error-gif {
     max-width: 320px;
+  }
+
+  .error-suggestions {
+    padding: 1rem;
+  }
+
+  .error-suggestions h2 {
+    font-size: 1.3rem;
+  }
+
+  .suggestion-links {
+    gap: 0.5rem;
+  }
+
+  .suggestion-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .movie-quote {
+    font-size: 0.85rem;
+    padding: 0.4rem;
   }
 }
 
@@ -131,5 +222,28 @@ body {
 
   .btn {
     padding: 0.6rem 1rem;
+  }
+
+  .error-suggestions {
+    padding: 0.8rem;
+  }
+
+  .error-suggestions h2 {
+    font-size: 1.1rem;
+  }
+
+  .suggestion-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .suggestion-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .movie-quote {
+    font-size: 0.8rem;
+    padding: 0.4rem;
   }
 }
