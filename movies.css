@@ -297,3 +297,28 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Load More Button */
+.load-more-btn {
+  display: block;
+  margin: 40px auto;
+  padding: 15px 30px;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+
+.load-more-btn:hover {
+  background-color: #f40612;
+  transform: scale(1.05);
+}
+
+.load-more-btn:active {
+  transform: scale(0.95);
+}

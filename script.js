@@ -296,23 +296,6 @@ async function populateMoviesGrid() {
 
   currentPage++;
   isLoading = false;
-
-  // Add Load More button if there are more movies
-  const loadMoreBtn = document.getElementById('loadMoreBtn');
-  if (endIndex < allMovies.length) {
-    if (!loadMoreBtn) {
-      const btn = document.createElement('button');
-      btn.id = 'loadMoreBtn';
-      btn.className = 'load-more-btn';
-      btn.textContent = 'Load More Movies';
-      btn.addEventListener('click', populateMoviesGrid);
-      moviesGrid.parentNode.appendChild(btn);
-    }
-  } else {
-    if (loadMoreBtn) {
-      loadMoreBtn.remove();
-    }
-  }
 }
 
 // Shuffle array function using Fisher-Yates algorithm
@@ -338,6 +321,17 @@ function handleScroll() {
     const totalMoviesLoaded = currentPage * moviesPerPage;
     if (totalMoviesLoaded < allMovies.length && !isLoading) {
       populateMoviesGrid();
+      // Check if 200 movies are loaded, then stop infinite scroll and add Load More button
+      if (totalMoviesLoaded + moviesPerPage >= 200) {
+        window.removeEventListener('scroll', handleScroll);
+        // Add Load More button
+        const loadMoreBtn = document.createElement('button');
+        loadMoreBtn.id = 'loadMoreBtn';
+        loadMoreBtn.className = 'load-more-btn';
+        loadMoreBtn.textContent = 'Load More Movies';
+        loadMoreBtn.addEventListener('click', populateMoviesGrid);
+        moviesGrid.parentNode.appendChild(loadMoreBtn);
+      }
     }
   }
 }
