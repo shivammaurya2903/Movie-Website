@@ -92,16 +92,26 @@ body {
 .navbar {
   width: 100%;
   height: 100px;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(10, 10, 10, 0.9) 50%, rgba(0, 0, 0, 0.9) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   position: sticky;
   top: 0;
   z-index: 1000;
   text-decoration: none;
   margin-bottom: var(--space-md);
-  border-bottom: 1px solid rgba(77, 191, 0, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid linear-gradient(90deg, #4dbf00, #2f8e00);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(77, 191, 0, 0.1);
+  animation: navbarGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes navbarGlow {
+  0% {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(77, 191, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 30px rgba(77, 191, 0, 0.2);
+  }
 }
 
 .navbar-container {
@@ -137,11 +147,12 @@ body {
   font-weight: 500;
   text-transform: uppercase;
   position: relative;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   scroll-behavior: smooth;
   display: flex;
   align-items: center;
   gap: 8px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .menu-container a:hover,

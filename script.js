@@ -342,6 +342,31 @@ function handleScroll() {
   }
 }
 
+// Hamburger menu toggle
+function initializeHamburgerMenu() {
+  const hamburger = document.getElementById('hamburger');
+  const menuContainer = document.getElementById('menuContainer');
+
+  if (hamburger && menuContainer) {
+    hamburger.addEventListener('click', () => {
+      menuContainer.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside or on a link
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !menuContainer.contains(e.target)) {
+        menuContainer.classList.remove('active');
+      }
+    });
+
+    menuContainer.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        menuContainer.classList.remove('active');
+      }
+    });
+  }
+}
+
 // Run on page load
 document.addEventListener('DOMContentLoaded', () => {
   populateMovies();
@@ -353,6 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pauseOnHover();
   }
   initializeWatchlist();
+  initializeHamburgerMenu(); // Add hamburger menu functionality
 
   // Add scroll event listener for infinite scroll on movies page
   const moviesGrid = document.getElementById('moviesGrid');
