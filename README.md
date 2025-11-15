@@ -2,7 +2,7 @@
   <img src="gif/z-logo.png" alt="Zinema Logo" width="150" height="150"/>
 </p>
 
-<h1 align="center"> Zinema</h1>
+
 <p align="center">
   <b>A free, modular, and responsive movie-themed website for visual richness and user engagement!</b>
   <br/>
@@ -128,7 +128,9 @@ Feel free to fork, star ⭐, or submit pull requests. For feedback or collaborat
 
 ## 📬 Contact & Feedback
 - **Developer**: Shivam Maurya
+- **Developer**: Shiv Kamal
 - **LinkedIn**: [Shivam Maurya](https://www.linkedin.com/in/shivam-maurya-2a3a24347/)
+- **LinkedIn**: [Shiv Kamal](https://www.linkedin.com/in/shiv-kamal-0740b9343/)
 - **GitHub**: [shivammaurya2903](https://github.com/shivammaurya2903)
 
 Want me to tailor this for your Smart India Hackathon project or add deployment instructions (like GitHub Pages or Netlify)? Just say the word!
