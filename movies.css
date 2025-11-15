@@ -326,13 +326,15 @@
 /* Offline message */
 .offline-message {
   text-align: center;
-  padding: 20px;
-  font-size: 18px;
+  padding: 40px 20px;
+  font-size: 24px;
   color: #ff6b6b;
   background-color: #ffeaa7;
-  border: 1px solid #ff9f43;
-  border-radius: 8px;
-  margin: 20px 0;
+  border: 2px solid #ff9f43;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .offline-message i {

@@ -101,8 +101,7 @@ async function populateMovies() {
   const sections = [
     { selector: '.movie-list-container:nth-of-type(1) .movie-list', start: 0, count: 10 }, // New & Noteworthy
     { selector: '.movie-list-container:nth-of-type(2) .movie-list', start: 10, count: 10 }, // Popular Picks
-    { selector: '.movie-list-container:nth-of-type(3) .movie-list', start: 20, count: 10 }, // Action & Adventure
-    { selector: '.movie-list-container:nth-of-type(4) .movie-list', start: 30, count: 10 }  // Superheroes & Sci‑Fi
+    { selector: '.movie-list-container:nth-of-type(3) .movie-list', start: 20, count: 10 } // Action & Adventure
   ];
 
   sections.forEach(section => {
@@ -246,6 +245,13 @@ async function populateMoviesGrid() {
   const moviesGrid = document.getElementById('moviesGrid');
   if (!moviesGrid) return; // Only run on movies page
 
+  // Check if offline
+  if (!navigator.onLine) {
+    // Clear grid and show offline message
+    moviesGrid.innerHTML = '<div class="offline-message">You are currently offline. Please check your internet connection and try again.</div>';
+    return;
+  }
+
   if (currentPage === 0) {
     allMovies = await loadMovies();
     // Shuffle the movies array for random order
@@ -311,6 +317,9 @@ function shuffleArray(array) {
 function handleScroll() {
   const moviesGrid = document.getElementById('moviesGrid');
   if (!moviesGrid) return;
+
+  // Check if offline, stop infinite scroll
+  if (!navigator.onLine) return;
 
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   const windowHeight = window.innerHeight;
