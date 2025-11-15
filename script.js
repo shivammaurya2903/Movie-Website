@@ -1,3 +1,6 @@
+// Load preloaded movie data from JSON file
+let preloadedMovies = [];
+
 // Function to extract clean title from full title string
 function cleanTitle(fullTitle = '') {
   let clean = String(fullTitle)
@@ -17,7 +20,23 @@ function cleanTitle(fullTitle = '') {
   return clean;
 }
 
-// CSV Parser (robust for quoted fields)
+// Load preloaded movies from JSON
+async function loadPreloadedMovies() {
+  try {
+    const res = await fetch("data.json");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    preloadedMovies = await res.json();
+    preloadedMovies.forEach(movie => {
+      movie.clean_title = cleanTitle(movie.title || movie.name || '');
+    });
+    console.log("Preloaded Movies Loaded:", preloadedMovies.length);
+    return preloadedMovies;
+  } catch (err) {
+    console.error("Failed to load preloaded movies:", err);
+    return [];
+  }
+}
+
 function parseCSV(text) {
   const rows = [];
   let cur = '';
@@ -117,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- Movie sections population ---------- */
   async function populateMovies() {
-    allMovies = await loadMovies();
+    allMovies = await loadPreloadedMovies();
 
     // Define sections and their movie ranges
     const sections = [

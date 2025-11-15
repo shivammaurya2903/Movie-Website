@@ -1,2 +1,0 @@
-- [x] Fix responsiveness of search page by removing flex-direction: column from .search-results in responsive.css under mobile media query
-- [x] Increase width of image cards on search page by changing .movie-list-item width to 100% in responsive.css for mobile screens
