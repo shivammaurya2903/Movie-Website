@@ -1,6 +1,6 @@
-# TODO: Implement Scroll-Based Loading of Random Movies
-
-- [x] Add a global flag `isLoading` to prevent multiple simultaneous loads.
-- [x] Create a `loadRandomMovies` function that selects 10 random movies from `allMovies`, creates a new `movie-list-container` section titled "More Movies", and appends it to the container.
-- [x] Add a scroll event listener to the window that checks if the user is near the bottom of the page (e.g., within 100px), and if not loading, calls `loadRandomMovies`.
-- [x] Ensure the new section uses the same HTML structure as existing sections for consistency.
+- [x] Update onerror for movie images in populateMovies (index.html lists) to use the specified placeholder image URL
+- [x] Update onerror for movie images in populateMoviesGrid (movies.html grid) to use the specified placeholder image URL
+- [x] Add offline check in populateMoviesGrid to prevent loading when not connected and show offline message
+- [x] Update handleScroll to stop infinite scroll if offline
+- [x] Add CSS for offline message styling
+- [ ] Test the changes offline to ensure no continuous loading or errors

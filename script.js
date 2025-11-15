@@ -101,8 +101,7 @@ async function populateMovies() {
   const sections = [
     { selector: '.movie-list-container:nth-of-type(1) .movie-list', start: 0, count: 10 }, // New & Noteworthy
     { selector: '.movie-list-container:nth-of-type(2) .movie-list', start: 10, count: 10 }, // Popular Picks
-    { selector: '.movie-list-container:nth-of-type(3) .movie-list', start: 20, count: 10 }, // Action & Adventure
-    { selector: '.movie-list-container:nth-of-type(4) .movie-list', start: 30, count: 10 }  // Superheroes & Sci‑Fi
+    { selector: '.movie-list-container:nth-of-type(3) .movie-list', start: 20, count: 10 } // Action & Adventure
   ];
 
   sections.forEach(section => {
@@ -120,7 +119,7 @@ async function populateMovies() {
       item.className = 'movie-list-item';
 
       item.innerHTML = `
-        <img class="movie-list-item-img" src="${movie.image_url}" alt="${movie.clean_title}">
+        <img class="movie-list-item-img" src="${movie.image_url}" alt="${movie.clean_title}" onerror="this.src='gif/img-not load.png'">
         <span class="movie-list-item-title">${movie.clean_title}</span>
         <div class="movie-item-actions">
           <a href="${movie.movie_link}" target="_blank" class="movie-list-item-button"><i class="fas fa-download"></i> Download</a>
@@ -246,6 +245,13 @@ async function populateMoviesGrid() {
   const moviesGrid = document.getElementById('moviesGrid');
   if (!moviesGrid) return; // Only run on movies page
 
+  // Check if offline
+  if (!navigator.onLine) {
+    // Clear grid and show offline message
+    moviesGrid.innerHTML = '<div class="offline-message">You are currently offline. Please check your internet connection and try again.</div>';
+    return;
+  }
+
   if (currentPage === 0) {
     allMovies = await loadMovies();
     // Shuffle the movies array for random order
@@ -271,7 +277,7 @@ async function populateMoviesGrid() {
     item.className = 'movie-grid-item';
 
     item.innerHTML = `
-      <img class="movie-grid-item-img" src="${movie.image_url}" alt="${movie.clean_title}" onerror="this.src='https://via.placeholder.com/250x350?text=No+Image'">
+      <img class="movie-grid-item-img" src="${movie.image_url}" alt="${movie.clean_title}" onerror="this.src='gif/img-not load.png'">
       <div class="movie-grid-item-overlay">
         <h3 class="movie-grid-item-title">${movie.clean_title}</h3>
         <div class="movie-grid-item-actions">
@@ -296,23 +302,6 @@ async function populateMoviesGrid() {
 
   currentPage++;
   isLoading = false;
-
-  // Add Load More button if there are more movies
-  const loadMoreBtn = document.getElementById('loadMoreBtn');
-  if (endIndex < allMovies.length) {
-    if (!loadMoreBtn) {
-      const btn = document.createElement('button');
-      btn.id = 'loadMoreBtn';
-      btn.className = 'load-more-btn';
-      btn.textContent = 'Load More Movies';
-      btn.addEventListener('click', populateMoviesGrid);
-      moviesGrid.parentNode.appendChild(btn);
-    }
-  } else {
-    if (loadMoreBtn) {
-      loadMoreBtn.remove();
-    }
-  }
 }
 
 // Shuffle array function using Fisher-Yates algorithm
@@ -329,6 +318,9 @@ function handleScroll() {
   const moviesGrid = document.getElementById('moviesGrid');
   if (!moviesGrid) return;
 
+  // Check if offline, stop infinite scroll
+  if (!navigator.onLine) return;
+
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   const windowHeight = window.innerHeight;
   const documentHeight = document.documentElement.scrollHeight;
@@ -338,7 +330,43 @@ function handleScroll() {
     const totalMoviesLoaded = currentPage * moviesPerPage;
     if (totalMoviesLoaded < allMovies.length && !isLoading) {
       populateMoviesGrid();
+      // Check if 200 movies are loaded, then stop infinite scroll and add Load More button
+      if (totalMoviesLoaded + moviesPerPage >= 200) {
+        window.removeEventListener('scroll', handleScroll);
+        // Add Load More button
+        const loadMoreBtn = document.createElement('button');
+        loadMoreBtn.id = 'loadMoreBtn';
+        loadMoreBtn.className = 'load-more-btn';
+        loadMoreBtn.textContent = 'Load More Movies';
+        loadMoreBtn.addEventListener('click', populateMoviesGrid);
+        moviesGrid.parentNode.appendChild(loadMoreBtn);
+      }
     }
+  }
+}
+
+// Hamburger menu toggle
+function initializeHamburgerMenu() {
+  const hamburger = document.getElementById('hamburger');
+  const menuContainer = document.getElementById('menuContainer');
+
+  if (hamburger && menuContainer) {
+    hamburger.addEventListener('click', () => {
+      menuContainer.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside or on a link
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !menuContainer.contains(e.target)) {
+        menuContainer.classList.remove('active');
+      }
+    });
+
+    menuContainer.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        menuContainer.classList.remove('active');
+      }
+    });
   }
 }
 
@@ -353,6 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pauseOnHover();
   }
   initializeWatchlist();
+  initializeHamburgerMenu(); // Add hamburger menu functionality
 
   // Add scroll event listener for infinite scroll on movies page
   const moviesGrid = document.getElementById('moviesGrid');
