@@ -17,10 +17,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-drag: none;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
   scrollbar-color: #4dbf00 transparent;
 }
 
