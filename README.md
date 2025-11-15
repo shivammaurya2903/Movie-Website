@@ -1,7 +1,28 @@
-# 🎬 Zinema
+<p align="center">
+  <img src="gif/z-logo.png" alt="Zinema Logo" width="150" height="150"/>
+</p>
 
-Welcome to **Zinema** – a free, modular, and responsive movie-themed website designed for visual richness and user engagement.
-This project brings the cinematic world to the web, with **Bollywood-inspired banners**, **interactive movie cards**, and a **dynamic homepage** that feels alive. Whether you're here to learn, contribute, or simply explore, Zinema is built to inspire creativity and provide a solid base for modern front-end projects.
+<h1 align="center"> Zinema</h1>
+<p align="center">
+  <b>A free, modular, and responsive movie-themed website for visual richness and user engagement!</b>
+  <br/>
+  <i>Bringing the cinematic world to the web with Bollywood-inspired banners and interactive movie cards.</i>
+</p>
+
+<p align="center">
+  <a href="https://github.com/shivammaurya2903/Movie-Website/stargazers">
+    <img src="https://img.shields.io/github/stars/shivammaurya2903/Movie-Website?style=for-the-badge&color=yellow" alt="Stars"/>
+  </a>
+  <a href="https://github.com/shivammaurya2903/Movie-Website/forks">
+    <img src="https://img.shields.io/github/forks/shivammaurya2903/Movie-Website?style=for-the-badge&color=blue" alt="Forks"/>
+  </a>
+  <a href="https://github.com/shivammaurya2903/Movie-Website/issues">
+    <img src="https://img.shields.io/github/issues/shivammaurya2903/Movie-Website?style=for-the-badge&color=red" alt="Issues"/>
+  </a>
+  <a href="https://github.com/shivammaurya2903/Movie-Website/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/shivammaurya2903/Movie-Website?style=for-the-badge&color=green" alt="License"/>
+  </a>
+</p>
 
 ---
 
@@ -33,6 +54,18 @@ Think of it as a **starter kit for movie websites** – perfect for practice, po
 - 👤 **Login & Profile Logic** with localStorage (no backend required)
 - 📱 **Responsive Layout** that adapts to all screen sizes
 - 🛠 **Modular Codebase** for easy scalability and customization
+
+---
+
+## 🎥 Demo
+Check out the live demo of Zinema [here](https://shivammaurya2903.github.io/Movie-Website/) (if deployed on GitHub Pages).
+
+### Screenshots
+<p align="center">
+  <img src="https://via.placeholder.com/600x300?text=Homepage+Screenshot" alt="Homepage Screenshot" width="600"/>
+  <br/>
+  <em>Figure 1: Zinema Homepage</em>
+</p>
 
 ---
 
