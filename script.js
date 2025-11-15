@@ -120,7 +120,7 @@ async function populateMovies() {
       item.className = 'movie-list-item';
 
       item.innerHTML = `
-        <img class="movie-list-item-img" src="${movie.image_url}" alt="${movie.clean_title}">
+        <img class="movie-list-item-img" src="${movie.image_url}" alt="${movie.clean_title}" onerror="this.src='gif/img-not load.png'">
         <span class="movie-list-item-title">${movie.clean_title}</span>
         <div class="movie-item-actions">
           <a href="${movie.movie_link}" target="_blank" class="movie-list-item-button"><i class="fas fa-download"></i> Download</a>
@@ -271,7 +271,7 @@ async function populateMoviesGrid() {
     item.className = 'movie-grid-item';
 
     item.innerHTML = `
-      <img class="movie-grid-item-img" src="${movie.image_url}" alt="${movie.clean_title}" onerror="this.src='https://via.placeholder.com/250x350?text=No+Image'">
+      <img class="movie-grid-item-img" src="${movie.image_url}" alt="${movie.clean_title}" onerror="this.src='gif/img-not load.png'">
       <div class="movie-grid-item-overlay">
         <h3 class="movie-grid-item-title">${movie.clean_title}</h3>
         <div class="movie-grid-item-actions">

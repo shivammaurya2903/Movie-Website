@@ -322,3 +322,19 @@
 .load-more-btn:active {
   transform: scale(0.95);
 }
+
+/* Offline message */
+.offline-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  color: #ff6b6b;
+  background-color: #ffeaa7;
+  border: 1px solid #ff9f43;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.offline-message i {
+  margin-right: 10px;
+}
