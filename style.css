@@ -163,7 +163,7 @@ body {
 .banner {
   position: relative;
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   overflow: hidden;
   margin-bottom: var(--space-lg);
 }
@@ -183,9 +183,9 @@ body {
 }
 
 .banner-slide img {
-  width: 80%;
+  width: 100%;
   height: 100%;
-  object-fit: cover; /* contain may produce letterboxing; cover gives full bleed */
+  object-fit: contain; /* contain may produce letterboxing; cover gives full bleed */
 }
 
 .banner-overlay {
