@@ -149,7 +149,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const movieList = document.querySelector(section.selector);
       if (!movieList) return;
 
-      movieList.innerHTML = '';
+      // Remove skeleton placeholders before populating real content
+      const skeletons = movieList.querySelectorAll('.skeleton');
+      skeletons.forEach(skeleton => skeleton.remove());
+
+      // Use documentFragment to batch DOM insertions and minimize reflows
+      const fragment = document.createDocumentFragment();
 
       const endIndex = Math.min(section.start + section.count, allMovies.length);
 
@@ -163,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const movieLink = movie.movie_link || '#';
 
         item.innerHTML = `
-          <img class="movie-list-item-img" src="${imgSrc}" alt="${movie.clean_title || ''}" onerror="this.src='gif/img-not load.png'">
+          <img class="movie-list-item-img" src="${imgSrc}" alt="${movie.clean_title || ''}" onerror="this.src='gif/img-not load.png'" loading="lazy">
           <span class="movie-list-item-title">${movie.clean_title || (movie.title || '')}</span>
           <div class="movie-item-actions">
             <a href="${movieLink}" target="_blank" rel="noopener" class="movie-list-item-button"><i class="fas fa-download"></i> Download</a>
@@ -171,8 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `;
 
-        movieList.appendChild(item);
+        fragment.appendChild(item);
       }
+
+      movieList.appendChild(fragment);
     });
   }
 
@@ -212,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const movieLink = movie.movie_link || '#';
 
       item.innerHTML = `
-        <img class="movie-grid-item-img" src="${imgSrc}" alt="${movie.clean_title || ''}" onerror="this.src='gif/img-not load.png'">
+        <img class="movie-grid-item-img" src="${imgSrc}" alt="${movie.clean_title || ''}" onerror="this.src='gif/img-not load.png'" loading="lazy">
         <div class="movie-grid-item-overlay">
           <h3 class="movie-grid-item-title">${movie.clean_title || (movie.title || '')}</h3>
           <div class="movie-grid-item-actions">

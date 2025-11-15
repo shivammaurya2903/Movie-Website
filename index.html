@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Preload critical assets to reduce TTFB and prioritize loading of LCP elements like the banner image and fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Sen:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="gif/z-logo.png" as="image">
+    <link rel="preload" href="gif/fevi-icon.png" as="image">
+    <!-- Prioritize the largest visible element (banner image) with high fetchpriority to improve LCP -->
+    <link rel="preload" href="https://static.vecteezy.com/system/resources/previews/002/236/321/non_2x/movie-trendy-banner-vector.jpg" as="image" fetchpriority="high">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="shortcut icon" href="gif/fevi-icon.png" type="image/x-icon">
+    <!-- Load full stylesheet externally to avoid render-blocking; preload critical assets like fonts and images for faster LCP -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
     <title>Movie Design</title>
 </head>
-
 <body>
     <div class="navbar" id="navbar">
         <div class="navbar-container">
@@ -35,42 +41,43 @@
     <div class="container">
         <div class="banner">
             <div class="banner-slide active">
-                <img src="https://static.vecteezy.com/system/resources/previews/002/236/321/non_2x/movie-trendy-banner-vector.jpg" alt="Banner 1">
+                <!-- Reserve space for banner images to prevent CLS shifts; using aspect-ratio for responsive behavior; prioritize LCP with eager loading -->
+                <img src="https://static.vecteezy.com/system/resources/previews/002/236/321/non_2x/movie-trendy-banner-vector.jpg" alt="Banner 1" style="aspect-ratio: 16/9; width: 80%; height: auto;" loading="eager" fetchpriority="high">
                 <div class="banner-overlay">
                     <h2>Welcome to Zinema</h2>
                     <p>Discover the latest blockbusters and timeless classics</p>
                 </div>
             </div>
             <div class="banner-slide">
-                <img src="https://i.redd.it/6osikpalawp91.jpg" alt="Banner 2">
+                <img src="https://i.redd.it/6osikpalawp91.jpg" alt="Banner 2" style="aspect-ratio: 16/9; width: 80%; height: auto;" loading="eager">
                 <div class="banner-overlay">
                     <h2>Action-Packed Adventures</h2>
                     <p>Feel the thrill with heart-pounding movies</p>
                 </div>
             </div>
             <div class="banner-slide">
-                <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2023/11/greatest-movies-of-all-time.jpg" alt="Banner 3">
+                <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2023/11/greatest-movies-of-all-time.jpg" alt="Banner 3" style="aspect-ratio: 16/9; width: 80%; height: auto;" loading="eager">
                 <div class="banner-overlay">
                     <h2>Greatest Movies Ever</h2>
                     <p>Explore cinematic masterpieces that shaped history</p>
                 </div>
             </div>
             <div class="banner-slide">
-                <img src="https://static.toiimg.com/photo/101561141.jpeg" alt="Banner 4">
+                <img src="https://static.toiimg.com/photo/101561141.jpeg" alt="Banner 4" style="aspect-ratio: 16/9; width: 80%; height: auto;" loading="eager">
                 <div class="banner-overlay">
                     <h2>Romantic Tales</h2>
                     <p>Love stories that touch your soul</p>
                 </div>
             </div>
             <div class="banner-slide">
-                <img src="https://i.ytimg.com/vi/-rMvyYMnK3c/maxresdefault.jpg" alt="Banner 5">
+                <img src="https://i.ytimg.com/vi/-rMvyYMnK3c/maxresdefault.jpg" alt="Banner 5" style="aspect-ratio: 16/9; width: 80%; height: auto;" loading="eager">
                 <div class="banner-overlay">
                     <h2>Family Entertainment</h2>
                     <p>Fun for all ages with unforgettable characters</p>
                 </div>
             </div>
             <div class="banner-slide">
-                <img src="https://bookandfilmglobe.com/wp-content/uploads/2019/04/https-blogs-images.forbes.com-scottmendelson-files-2019-04-screencapture-file-C-Users-JckNa-OneDrive-Desktop-b-avengersendgame-horizontal-friday-17793-04d92fbf-webp-2019-04-23-08_14_14.jpg" alt="Banner 6">
+                <img src="https://bookandfilmglobe.com/wp-content/uploads/2019/04/https-blogs-images.forbes.com-scottmendelson-files-2019-04-screencapture-file-C-Users-JckNa-OneDrive-Desktop-b-avengersendgame-horizontal-friday-17793-04d92fbf-webp-2019-04-23-08_14_14.jpg" alt="Banner 6" style="aspect-ratio: 16/9; width: 80%; height: auto;" loading="eager">
                 <div class="banner-overlay">
                     <h2>Superhero Sagas</h2>
                     <p>Join the heroes in epic battles</p>
@@ -85,6 +92,32 @@
             <h1 class="movie-list-title">New & Noteworthy</h1>
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
+                        <!-- Skeleton placeholders to prevent CLS during dynamic content load -->
+                        <div class="movie-list-item skeleton">
+                            <div class="skeleton-img"></div>
+                            <div class="skeleton-title"></div>
+                            <div class="skeleton-actions">
+                                <div class="skeleton-button"></div>
+                                <div class="skeleton-button"></div>
+                            </div>
+                        </div>
+                        <div class="movie-list-item skeleton">
+                            <div class="skeleton-img"></div>
+                            <div class="skeleton-title"></div>
+                            <div class="skeleton-actions">
+                                <div class="skeleton-button"></div>
+                                <div class="skeleton-button"></div>
+                            </div>
+                        </div>
+                        <div class="movie-list-item skeleton">
+                            <div class="skeleton-img"></div>
+                            <div class="skeleton-title"></div>
+                            <div class="skeleton-actions">
+                                <div class="skeleton-button"></div>
+                                <div class="skeleton-button"></div>
+                            </div>
+                        </div>
+                        <!-- Add more skeletons as needed -->
                     </div>
                 </div>
             </div>
@@ -94,18 +127,45 @@
             <h1 class="movie-list-title">Popular Picks</h1>
             <div class="movie-list-wrapper">
                 <div class="movie-list">
+                    <!-- Skeleton placeholders to prevent CLS during dynamic content load -->
+                    <div class="movie-list-item skeleton">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-actions">
+                            <div class="skeleton-button"></div>
+                            <div class="skeleton-button"></div>
+                        </div>
+                    </div>
+                    <div class="movie-list-item skeleton">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-actions">
+                            <div class="skeleton-button"></div>
+                            <div class="skeleton-button"></div>
+                        </div>
+                    </div>
+                    <div class="movie-list-item skeleton">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-actions">
+                            <div class="skeleton-button"></div>
+                            <div class="skeleton-button"></div>
+                        </div>
+                    </div>
+                    <!-- Add more skeletons as needed -->
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="site-footer"> 
+    <footer class="site-footer">
             <div class="footer-container">
                 <p>&copy; 2025 Shivam Maurya. All rights reserved.</p>
-            </div>  
+            </div>
     </footer>
 
-<script src="script.js"></script>
+<!-- Load JS at the end to avoid render-blocking; defer execution to improve LCP -->
+<script defer src="script.js"></script>
 
 
 </body>
