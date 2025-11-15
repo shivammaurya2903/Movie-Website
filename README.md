@@ -62,7 +62,7 @@ Check out the live demo of Zinema [here](https://shivammaurya2903.github.io/Movi
 
 ### Screenshots
 <p align="center">
-  <img src="https://via.placeholder.com/600x300?text=Homepage+Screenshot" alt="Homepage Screenshot" width="600"/>
+  <img src="gif/Screenshot 2025-11-15 114427.png" alt="Homepage Screenshot" width="600"/>
   <br/>
   <em>Figure 1: Zinema Homepage</em>
 </p>

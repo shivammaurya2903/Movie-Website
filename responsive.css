@@ -115,7 +115,7 @@
   }
 
   .movie-list-item {
-    width: calc(50% - 5px);
+    width: 100%;
     max-width: none;
     min-height: 300px;
     padding: 10px;
@@ -192,7 +192,6 @@
   }
 
   .search-results {
-    flex-direction: column;
     gap: 20px;
   }
 
