@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About - Zinema</title>
   <link rel="stylesheet" href="about.css" />
+  <link rel="stylesheet" href="responsive.css" />
 </head>
+
 <body>
   <section class="about-section">
     <h1>About Zinema</h1>
     <p class="intro">
-      Zinema is a visually rich, modular movie platform built to celebrate the magic of cinema—especially Hollywood & Bollywood. From trending blockbusters to timeless classics, we curate content that connects fans with stories they love.
+      Zinema is a visually rich, modular movie platform built to celebrate the magic of cinema—especially Hollywood &
+      Bollywood. From trending blockbusters to timeless classics, we curate content that connects fans with stories they
+      love.
     </p>
 
     <div class="developer-info">
-      <h2>Meet the Developer</h2>
+      <h2>Meet the Developers</h2>
       <p>
-        👨‍💻 <strong>Shivam Maurya</strong> — A passionate web developer and designer from Lucknow, UP, India. 
+        👨‍💻 <strong>Shivam Maurya</strong> — A passionate web developer and designer from Lucknow, UP, India.
       </p>
       <p>
-        I thrive on rapid prototyping, responsive design, and creative iteration. Whether it’s crafting hover effects, toggling themes, or organizing trending movie sections, I love turning ideas into engaging user experiences. I’m also an active event organizer, contributing to technical, outreach, and PR teams, and preparing for the a real-world education analytics solution .
+        Let’s connect, collaborate, and keep creating.
       </p>
-        <p>
-            When I’m not coding, you can find me exploring new technologies, attending tech meetups, or indulging in my love for movies and music.
-        </p>
-        <p>
-            Let’s connect, collaborate, and keep creating.
-        </p>
-  <p> Feel free to connect with me on <a href="https://www.linkedin.com/in/shivam-maurya-2a3a24347/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or check out my projects on <a href="https://github.com/shivammaurya2903" target="_blank" rel="noopener noreferrer">GitHub</a>.
+      <p> Feel free to connect with me on <a href="https://www.linkedin.com/in/shivam-maurya-2a3a24347/" target="_blank"
+          rel="noopener noreferrer">LinkedIn</a> or check out my projects on <a
+          href="https://github.com/shivammaurya2903" target="_blank" rel="noopener noreferrer">GitHub</a>.
       </p>
     </div>
 
     <div class="thanks-section">
       <h2>Thank you for visiting</h2>
       <p>
-        We appreciate you stopping by Zinema. If you have questions, feedback, or collaboration ideas, please drop a message below — we'll get back to you as soon as possible.
+        We appreciate you stopping by Zinema. If you have questions, feedback, or collaboration ideas, please drop a
+        message below — we'll get back to you as soon as possible.
       </p>
     </div>
 
@@ -54,5 +56,48 @@
       <p>&copy; 2025 Shivam Maurya. All rights reserved.</p>
     </div>
   </footer>
+
+    <script>
+      // Contact form submission handler
+      function handleContactFormSubmit(event) {
+        event.preventDefault();
+      
+        const form = event.target;
+        const name = form.querySelector('input[type="text"]').value.trim();
+        const email = form.querySelector('input[type="email"]').value.trim();
+        const message = form.querySelector('textarea').value.trim();
+      
+        if (!name || !email || !message) {
+          alert('Please fill in all fields.');
+          return;
+        }
+      
+        // Simple email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+      
+        // Simulate sending the message (replace with actual backend call)
+        alert(`Thank you, ${name}! Your message has been sent successfully. We will get back to you soon.`);
+      
+        // Reset the form
+        form.reset();
+      }
+
+      // Initialize contact form
+      function initializeContactForm() {
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+          contactForm.addEventListener('submit', handleContactFormSubmit);
+        }
+      }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+      initializeContactForm();
+      });
+  </script>
 </body>
+
 </html>

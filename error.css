@@ -18,14 +18,14 @@ body {
   padding: 2rem;
   background-color: #0f0f0f;
   border-radius: 10px;
-  box-shadow: 0 0 20px #4db800;
+  box-shadow: 0 0 20px #4dbf00;
 }
 
 
 .error-container h1 {
   font-size: 6rem;
   margin-bottom: 1rem;
-  color: #4db800;
+  color: #4dbf00;
   letter-spacing: 2px;
 }
 
@@ -57,7 +57,7 @@ body {
 
 
 .btn {
-  background-color: #4db800;
+  background-color: #4dbf00;
   color: #fff;
   padding: 0.8rem 1.5rem;
   text-decoration: none;
@@ -67,7 +67,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #1d4202;
+  background-color: #2f8e00;
 }
 
 

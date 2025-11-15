@@ -1,0 +1,444 @@
+/* Responsive CSS for Mobile Phones - Zinema */
+
+/* General Mobile Adjustments */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 16px;
+  }
+
+  /* Navbar Responsiveness */
+  .navbar {
+    height: auto;
+    padding: 10px 0;
+  }
+
+  .navbar-container {
+    flex-direction: column;
+    padding: 0 15px;
+    height: auto;
+  }
+
+  .logo img {
+    margin-left: 0;
+    height: 60px;
+  }
+
+  .menu-container {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+    height: auto;
+  }
+
+  .menu-container a {
+    font-size: 14px;
+    padding: 10px 0;
+  }
+
+  /* Banner Responsiveness */
+  .banner {
+    height: 30vh;
+  }
+
+  .banner-overlay h2 {
+    font-size: 1.5rem;
+  }
+
+  .banner-overlay p {
+    font-size: 0.9rem;
+  }
+
+  .banner-arrow {
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  .banner-arrow-prev {
+    left: 10px;
+  }
+
+  .banner-arrow-next {
+    right: 10px;
+  }
+
+  .banner-dots {
+    bottom: 10px;
+  }
+
+  .banner-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Movie List Responsiveness */
+  .movie-list-container {
+    padding: 20px 10px;
+  }
+
+  .movie-list-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .movie-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .movie-list-item {
+    width: 100%;
+    max-width: 280px;
+    min-height: 300px;
+    padding: 10px;
+  }
+
+  .movie-list-item-img {
+    height: 200px;
+  }
+
+  .movie-list-item-title {
+    font-size: 1rem;
+  }
+
+  .movie-list-item-desc {
+    font-size: 13px;
+  }
+
+  .movie-list-item-button {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .movie-item-actions {
+    gap: 6px;
+  }
+
+  .watch-main {
+    padding: 8px 40px 8px 12px;
+  }
+
+  .watch-toggle {
+    width: 35px;
+    height: 24px;
+    right: 8px;
+  }
+
+  /* Footer Responsiveness */
+  .site-footer {
+    padding: 15px 0;
+  }
+
+  .footer-container {
+    padding: 0 15px;
+  }
+
+  .footer-container p {
+    font-size: 12px;
+  }
+
+  /* Search Page Specific */
+  .search-container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .search-input {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .search-button {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .search-results {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* About Page Specific */
+  section {
+    padding: 2rem 1rem;
+  }
+
+  .about-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .intro {
+    font-size: 1.1rem;
+  }
+
+  .developer-info h2,
+  .contact-form-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .developer-info p {
+    font-size: 1rem;
+  }
+
+  .thanks-section {
+    padding: 0.9rem 1rem;
+  }
+
+  .thanks-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .thanks-section p {
+    font-size: 0.98rem;
+  }
+
+  .contact-form {
+    gap: 1rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1rem;
+  }
+
+  .contact-form button {
+    font-size: 1rem;
+  }
+
+  /* Error Page Specific */
+  .error-container {
+    max-width: 520px;
+    padding: 1.5rem;
+  }
+
+  .error-container h1 {
+    font-size: 4.5rem;
+  }
+
+  .error-container p {
+    font-size: 1.1rem;
+  }
+
+  .error-gif {
+    max-width: 320px;
+  }
+
+  .maintenance-msg {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+/* Extra Small Screens (Phones < 480px) */
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  /* Navbar */
+  .navbar-container {
+    padding: 0 10px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+
+  .menu-container a {
+    font-size: 13px;
+    padding: 8px 0;
+  }
+
+  /* Banner */
+  .banner {
+    height: 25vh;
+  }
+
+  .banner-overlay h2 {
+    font-size: 1.2rem;
+  }
+
+  .banner-overlay p {
+    font-size: 0.8rem;
+  }
+
+  .banner-arrow {
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  .banner-arrow-prev {
+    left: 5px;
+  }
+
+  .banner-arrow-next {
+    right: 5px;
+  }
+
+  .banner-dots {
+    bottom: 5px;
+  }
+
+  .banner-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Movie List */
+  .movie-list-container {
+    padding: 15px 5px;
+  }
+
+  .movie-list-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  .movie-list-item {
+    max-width: 250px;
+    min-height: 280px;
+    padding: 8px;
+  }
+
+  .movie-list-item-img {
+    height: 180px;
+  }
+
+  .movie-list-item-title {
+    font-size: 0.9rem;
+  }
+
+  .movie-list-item-desc {
+    font-size: 12px;
+  }
+
+  .movie-list-item-button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .watch-main {
+    padding: 6px 35px 6px 10px;
+  }
+
+  .watch-toggle {
+    width: 30px;
+    height: 20px;
+    right: 6px;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 10px 0;
+  }
+
+  .footer-container {
+    padding: 0 10px;
+  }
+
+  .footer-container p {
+    font-size: 11px;
+  }
+
+  /* Search */
+  .search-container {
+    padding: 15px;
+  }
+
+  .search-input {
+    font-size: 15px;
+  }
+
+  .search-button {
+    font-size: 13px;
+  }
+
+  /* About */
+  section {
+    padding: 1.5rem 0.8rem;
+  }
+
+  .about-section h1 {
+    font-size: 2rem;
+  }
+
+  .intro {
+    font-size: 1rem;
+  }
+
+  .developer-info h2,
+  .contact-form-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .developer-info p {
+    font-size: 0.95rem;
+  }
+
+  .thanks-section {
+    padding: 0.7rem 0.8rem;
+  }
+
+  .thanks-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .thanks-section p {
+    font-size: 0.9rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+  }
+
+  .contact-form button {
+    font-size: 0.95rem;
+  }
+
+  /* Error */
+  body {
+    padding: 12px;
+    height: auto;
+  }
+
+  .error-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .error-container h1 {
+    font-size: 3.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .error-container p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .maintenance-msg {
+    font-size: 0.9rem;
+  }
+
+  .error-gif {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1rem;
+  }
+}
