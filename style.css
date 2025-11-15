@@ -1,4 +1,12 @@
+:root {
+  --space-xs: 6px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --text-color: #ffffff; /* crystal white */
+}
 
+/* Reset / base */
 * {
   margin: 0;
   padding: 0;
@@ -14,54 +22,6 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: #4dbf00 transparent;
-}
-
-/* Fade-in animation for sections */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-/* Slide-in animation for navbar */
-@keyframes slideInDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.navbar {
-  animation: slideInDown 0.6s ease-out;
-}
-
-/* Slide-in animation for footer */
-@keyframes slideInUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.site-footer {
-  animation: slideInUp 0.6s ease-out;
 }
 
 html {
@@ -80,15 +40,7 @@ body {
   color: var(--text-color);
 }
 
-
-:root {
-  --space-xs: 6px;
-  --space-sm: 12px;
-  --space-md: 20px;
-  --space-lg: 32px;
-  --text-color: #ffffff; /* crystal white */
-}
-
+/* NAVBAR */
 .navbar {
   width: 100%;
   height: 100px;
@@ -98,9 +50,11 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  text-decoration: none;
   margin-bottom: var(--space-md);
-  border-bottom: 2px solid linear-gradient(90deg, #4dbf00, #2f8e00);
+  /* border-bottom cannot accept a gradient directly — use border-image or a pseudo element.
+     Here: use border-image for a gradient border */
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, #4dbf00, #2f8e00) 1;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(77, 191, 0, 0.1);
   animation: navbarGlow 3s ease-in-out infinite alternate;
 }
@@ -127,18 +81,19 @@ body {
   flex: 1;
 }
 
-.logo img{
+.logo img {
   margin-left: 5rem;
   height: 80px;
 }
 
+/* Menu / links */
 .menu-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
   height: 60px;
-  font-family: 'Sen', sans-serif;
+  font-family: "Sen", sans-serif;
 }
 
 .menu-container a {
@@ -186,6 +141,7 @@ body {
   width: 100%;
 }
 
+/* Hamburger bars */
 .bar {
   width: 28px;
   height: 4px;
@@ -200,29 +156,13 @@ body {
   display: none;
 }
 
-
-
-body.user-is-logged-in .profile-button {
-  display: inline-block;
-}
-
-body.user-is-logged-in .login-button {
-  display: none;
-}
-
-
+/* BANNER */
 .banner {
   position: relative;
   width: 100%;
   height: 50vh;
   overflow: hidden;
   margin-bottom: var(--space-lg);
-}
-
-@media (max-width: 768px) {
-  .banner {
-    height: 30vh;
-  }
 }
 
 .banner-slide {
@@ -240,9 +180,9 @@ body.user-is-logged-in .login-button {
 }
 
 .banner-slide img {
-  width: 100%;
+  width: 80%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover; /* contain may produce letterboxing; cover gives full bleed */
 }
 
 .banner-overlay {
@@ -268,15 +208,6 @@ body.user-is-logged-in .login-button {
   margin: 0;
   opacity: 0.9;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-}
-
-@media (max-width: 768px) {
-  .banner-overlay h2 {
-    font-size: 1.8rem;
-  }
-  .banner-overlay p {
-    font-size: 1rem;
-  }
 }
 
 .banner-arrow {
@@ -328,6 +259,7 @@ body.user-is-logged-in .login-button {
   background: #4dbf00;
 }
 
+/* MAIN CONTAINER */
 .container {
   background-color: #000000;
   padding: 24px;
@@ -337,6 +269,7 @@ body.user-is-logged-in .login-button {
   text-align: center;
 }
 
+/* MOVIE LIST */
 .movie-list-container {
   padding: 30px 20px;
   margin: var(--space-lg) 0;
@@ -359,11 +292,7 @@ body.user-is-logged-in .login-button {
   transition: all 0.4s ease-in-out;
   gap: var(--space-md);
   justify-content: center;
-}
-
-/* Make list wrap so items don't overlap on narrow screens */
-.movie-list {
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* make list wrap so items don't overlap on narrow screens */
 }
 
 .movie-list-item {
@@ -384,11 +313,7 @@ body.user-is-logged-in .login-button {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* let items shrink/grow inside the flex layout */
-.movie-list-item {
-  flex: 0 1 320px;
+  flex: 0 1 320px; /* allow shrinking/growing inside the flex layout */
   box-sizing: border-box;
 }
 
@@ -415,10 +340,10 @@ body.user-is-logged-in .login-button {
   opacity: 0.9;
 }
 
+/* Ensure title/desc/buttons stay in normal flow within the card */
 .movie-list-item-title,
 .movie-list-item-desc,
 .movie-list-item-button {
-  /* ensure these elements are in normal flow inside the card */
   position: static !important;
   opacity: 1 !important;
   transform: none !important;
@@ -440,12 +365,12 @@ body.user-is-logged-in .login-button {
   white-space: normal;
   overflow-wrap: anywhere;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 2;         /* webkit clamping */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-align: center;
   letter-spacing: 0.5px;
+  word-break: break-word;       /* additional fallback to prevent overflow */
 }
 
 .movie-list-item-desc {
@@ -458,11 +383,12 @@ body.user-is-logged-in .login-button {
   overflow-wrap: anywhere;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  word-break: break-word;
 }
 
+/* Buttons */
 .movie-list-item-button {
   padding: 12px 20px;
   background: linear-gradient(135deg, #4dbf00 0%, #2f8e00 100%);
@@ -490,16 +416,15 @@ body.user-is-logged-in .login-button {
   transform: scale(1.1);
 }
 
-/* Make movie item buttons inline and compact so two buttons can sit side-by-side */
+/* Make buttons full width inside the card */
 .movie-list-item .movie-list-item-button {
-  /* override previous compact layout: make buttons fill the card width */
   display: block;
   width: 100%;
-  margin: 0 0 0 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
-/* Static Add to Watchlist button styling (matches Watch button) */
+/* Watchlist button */
 .movie-list-item-watchlist {
   padding: 10px;
   background-color: #4dbf00;
@@ -545,25 +470,26 @@ body.user-is-logged-in .login-button {
   animation: pulse 0.3s ease-in-out;
 }
 
+/* Actions area (buttons stacked vertically) */
 .movie-item-actions {
   display: flex;
   flex-direction: column; /* stack buttons vertically */
   gap: 8px;
   align-items: stretch;
   margin-top: 8px;
-  /* make actions fill the card's content width so buttons line up with the image */
   width: 100%;
   margin-left: 0;
   box-sizing: border-box;
   padding: 0;
 }
 
-/* Combined Watch control: main watch button with a small inline toggle for watchlist */
+/* Combined watch group (main watch button + small inline toggle) */
 .watch-group {
   display: inline-flex;
   align-items: stretch;
   border-radius: 10px;
   overflow: hidden;
+  width: 100%;
 }
 
 .watch-main {
@@ -603,7 +529,7 @@ body.user-is-logged-in .login-button {
   color: #eaffea;
 }
 
-/* Ensure any button in the actions area stretches to card width */
+/* Ensure buttons stretch to width */
 .movie-item-actions button {
   width: 100%;
   display: block;
@@ -611,11 +537,12 @@ body.user-is-logged-in .login-button {
   text-align: center;
 }
 
-/* Make sure standalone watch buttons (if any) also match card width */
+/* Make sure standalone watch-main matches card width */
 .movie-list-item .watch-main {
   width: 100%;
 }
 
+/* FOOTER */
 .site-footer {
   background-color: #000000;
   color: #ffffff;
@@ -624,8 +551,6 @@ body.user-is-logged-in .login-button {
   border-top: 1px solid #4dbf00;
   margin-top: auto;
 }
-
-
 
 .footer-container {
   max-width: 1200px;
