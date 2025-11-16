@@ -185,7 +185,8 @@ body {
 .banner-slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* contain may produce letterboxing; cover gives full bleed */
+  aspect-ratio: 16/9;
+  object-fit: cover; /* cover gives full bleed */
 }
 
 .banner-overlay {
@@ -277,6 +278,8 @@ body {
   padding: 30px 20px;
   margin: var(--space-lg) 0;
   text-align: center;
+  min-height: 500px; /* Reserve space for dynamic content */
+  content-visibility: auto; /* Skip rendering off-screen content */
 }
 
 .movie-list-title {
@@ -324,7 +327,8 @@ body {
   width: 100%;
   height: 250px;
   display: block;
-  object-fit: contain;
+  aspect-ratio: 5/7;
+  object-fit: cover;
   border-radius: 12px;
   transition: transform 0.35s ease, opacity 0.35s ease;
   will-change: transform;

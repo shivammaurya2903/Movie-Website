@@ -432,6 +432,24 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeHamburgerMenu();
   initializeBanner();
 
+  // MutationObserver to apply aspect-ratio to dynamically added images
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          const images = node.querySelectorAll ? node.querySelectorAll('img.movie-list-item-img, img.movie-grid-item-img') : [];
+          images.forEach((img) => {
+            if (!img.style.aspectRatio) {
+              img.style.aspectRatio = '5/7';
+            }
+          });
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
   // Optional: handle resize (debounced) to react to orientation changes
   let resizeTimer = null;
   window.addEventListener('resize', () => {
